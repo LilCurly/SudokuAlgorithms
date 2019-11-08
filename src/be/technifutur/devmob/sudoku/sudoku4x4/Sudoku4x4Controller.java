@@ -32,9 +32,14 @@ public class Sudoku4x4Controller {
                 int row = Integer.parseInt(regexValues[0]);
                 int col = Integer.parseInt(regexValues[1]);
                 char value = regexValues[2].charAt(0);
-                model.add(new Position4x4(col - 1, row - 1), value);
-                view.update();
-                view.show(String.format("%s ajouté à la ligne %d et la colonne %d", value, row, col));
+                boolean result = model.add(new Position4x4(col - 1, row - 1), value);
+                if(result) {
+                    view.update();
+                    view.show(String.format("%s ajouté à la ligne %d et la colonne %d", value, row, col));
+                }
+                else {
+                    view.show(String.format("%s ne peut pas être ajouté à la ligne %d et la colonne %d", value, row, col));
+                }
             }
         }
     }
