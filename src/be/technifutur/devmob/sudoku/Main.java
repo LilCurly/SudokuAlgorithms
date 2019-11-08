@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku;
 
+import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
+import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Controller;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Vue;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Vue;
 import be.technifutur.devmob.sudoku.sudokuEtoile.SudokuEtoileVue;
@@ -8,7 +10,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Sudoku4x4Vue s4 = new Sudoku4x4Vue();
         Sudoku9x9Vue s9 = new Sudoku9x9Vue();
         SudokuEtoileVue sEtoile = new SudokuEtoileVue();
         boolean keepGoing = true;
@@ -30,7 +31,10 @@ public class Main {
                 opt = in.nextLine();
             }
             if (opt.equals("1")) {
-                s4.show();
+                Sudoku4x4 model = new Sudoku4x4();
+                Sudoku4x4Vue view = new Sudoku4x4Vue(model);
+                Sudoku4x4Controller controller = new Sudoku4x4Controller(model, view);
+                controller.start();
             } else if (opt.equals("2")) {
                 s9.show();
             } else if (opt.equals("3")) {
