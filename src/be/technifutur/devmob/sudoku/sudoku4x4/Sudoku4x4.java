@@ -15,7 +15,11 @@ public class Sudoku4x4 {
     }
 
     public boolean add(Position4x4 p, char val) {
-        boolean result = true;
+        boolean result = false;
+        if(Character.isDigit(val) && (Character.getNumericValue(val) >= 1 && Character.getNumericValue(val) <= 16)) {
+            values[p.getPos()] = val;
+            result = true;
+        }
         return result;
     }
 
@@ -29,5 +33,9 @@ public class Sudoku4x4 {
             if(c == EMPTY) result = false;
         }
         return result;
+    }
+
+    public char[] getValues() {
+        return this.values;
     }
 }
