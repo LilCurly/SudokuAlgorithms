@@ -11,7 +11,8 @@ class GridGeneratorTest {
      */
     @Test
     void testGenerate9ReturnsValidStringArray() {
-        String[] values = GridGenerator.generate(9);
+        GridGenerator gg = new GridGenerator();
+        String[] values = gg.generate(9);
         assertEquals(81, values.length);
         assertEquals("1.1.1", values[0]);
         assertEquals("9.9.9", values[80]);
@@ -22,7 +23,8 @@ class GridGeneratorTest {
      */
     @Test
     void testGenerate4ReturnsValidStringArray() {
-        String[] values = GridGenerator.generate(4);
+        GridGenerator gg = new GridGenerator();
+        String[] values = gg.generate(4);
         assertEquals(16, values.length);
         assertEquals("1.1.1", values[0]);
         assertEquals("4.4.4", values[15]);
