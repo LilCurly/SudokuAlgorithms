@@ -106,4 +106,30 @@ class Position9x9Test {
         assertEquals(4, p2.getSector(), String.format("Pos 40 should give Sector 4 but got %d", p2.getSector()));
         assertEquals(8, p3.getSector(), String.format("Pos 80 should give Sector 8 but got %d", p3.getSector()));
     }
+
+    /*
+        Testing if isValid() returns false when the values are out of limits
+     */
+    @Test
+    void testIsValidReturnsFalseWhenOutOfLimits() {
+        assertFalse(Position9x9.isValid(-1));
+        assertFalse(Position9x9.isValid(81));
+        assertFalse(Position9x9.isValid(100));
+        assertFalse(Position9x9.isValid(-1, 5));
+        assertFalse(Position9x9.isValid(5, 9));
+        assertFalse(Position9x9.isValid(-1, 9));
+    }
+
+    /*
+        Testing if isValid() returns true when the values are valid
+     */
+    @Test
+    void testIsValidReturnsTrueWhenValuesAreValid() {
+        assertTrue(Position9x9.isValid(0));
+        assertTrue(Position9x9.isValid(80));
+        assertTrue(Position9x9.isValid(30));
+        assertTrue(Position9x9.isValid(0, 8));
+        assertTrue(Position9x9.isValid(8, 0));
+        assertTrue(Position9x9.isValid(2, 3));
+    }
 }
