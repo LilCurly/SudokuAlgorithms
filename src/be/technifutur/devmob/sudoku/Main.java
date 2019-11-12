@@ -7,6 +7,8 @@ import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Controller;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Vue;
 import be.technifutur.devmob.sudoku.sudokuEtoile.SudokuEtoileVue;
+import be.technifutur.devmob.sudoku.utils.User;
+import be.technifutur.devmob.sudoku.utils.UserConsole;
 
 import java.util.Scanner;
 

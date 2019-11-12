@@ -1,13 +1,18 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.utils.User;
+import be.technifutur.devmob.sudoku.utils.UserConsole;
+
 import java.util.Scanner;
 
 public class Sudoku4x4Vue {
     private StringBuilder sb;
     private Sudoku4x4 model;
+    private User user;
 
     public Sudoku4x4Vue(Sudoku4x4 model) {
         this.model = model;
+        this.user = new UserConsole();
         update();
     }
 
@@ -22,21 +27,19 @@ public class Sudoku4x4Vue {
         sb.append(              "+------+------+\n");
     }
 
-    public void show(){
-        System.out.println("---------------------");
-        System.out.println("Sudoku 4x4");
+    public void showSudoku(){
         System.out.println(sb.toString());
     }
 
-    public void show(String str) {
-        System.out.println("---------------------");
-        System.out.println(str);
-        System.out.println(sb.toString());
+    public void show(String message) {
+        user.show(message);
     }
 
-    public String prompt(String str) {
-        System.out.println(str);
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
+    public String prompt(String message) {
+        return user.prompt(message);
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
