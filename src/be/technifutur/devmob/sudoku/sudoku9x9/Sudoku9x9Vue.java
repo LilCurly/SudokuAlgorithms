@@ -44,4 +44,8 @@ public class Sudoku9x9Vue {
     public String prompt(String message) {
         return user.prompt(message);
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
