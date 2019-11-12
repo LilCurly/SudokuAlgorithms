@@ -14,7 +14,8 @@ public class Sudoku9x9Controller {
 
     public void start() {
         boolean isOver = false;
-        view.show();
+        view.show("Sudoku 9x9");
+        view.showSudoku();
         while(!isOver) {
             String entry;
             Pattern p = Pattern.compile("^\\d\\.\\d\\.\\d");
@@ -40,15 +41,18 @@ public class Sudoku9x9Controller {
                     view.update();
                     if(model.isComplete()) {
                         view.show(String.format("%s ajouté à la ligne %d et la colonne %d\nSudoku terminé!", val, row, col));
+                        view.showSudoku();
                         view.prompt("Entrez n'importe quelle valeur pour quitter le Sudoku: ");
                         isOver = true;
                     }
                     else {
                         view.show(String.format("%s ajouté à la ligne %d et la colonne %d", val, row, col));
+                        view.showSudoku();
                     }
                 }
                 else {
-                    view.show(String.format("Impossible d'ajouté %s à la ligne %d et la colonne %d", val, row, col));
+                    view.show(String.format("Impossible d'ajouter %s à la ligne %d et la colonne %d", val, row, col));
+                    view.showSudoku();
                 }
             }
         }

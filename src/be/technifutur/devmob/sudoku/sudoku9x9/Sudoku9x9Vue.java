@@ -1,13 +1,17 @@
 package be.technifutur.devmob.sudoku.sudoku9x9;
 
-import java.util.Scanner;
+import be.technifutur.devmob.sudoku.utils.User;
+import be.technifutur.devmob.sudoku.utils.UserConsole;
+
 
 public class Sudoku9x9Vue {
     private StringBuilder sb;
     private Sudoku9x9 model;
+    private User user;
 
     public Sudoku9x9Vue(Sudoku9x9 model) {
         this.model = model;
+        this.user = new UserConsole();
         update();
     }
 
@@ -29,21 +33,15 @@ public class Sudoku9x9Vue {
         sb.append(              "+---------+---------+---------+\n");
     }
 
-    public void show() {
-        System.out.println("---------------------");
-        System.out.println("Sudoku 9x9");
+    public void showSudoku() {
         System.out.println(sb.toString());
     }
 
-    public void show(String str) {
-        System.out.println("---------------------");
-        System.out.println(str);
-        System.out.println(sb.toString());
+    public void show(String message) {
+        user.show(message);
     }
 
-    public String prompt(String str) {
-        System.out.println(str);
-        Scanner in = new Scanner(System.in);
-        return in.nextLine();
+    public String prompt(String message) {
+        return user.prompt(message);
     }
 }
