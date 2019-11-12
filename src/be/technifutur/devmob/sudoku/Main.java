@@ -3,6 +3,8 @@ package be.technifutur.devmob.sudoku;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Controller;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Vue;
+import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9;
+import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Controller;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Vue;
 import be.technifutur.devmob.sudoku.sudokuEtoile.SudokuEtoileVue;
 
@@ -10,7 +12,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Sudoku9x9Vue s9 = new Sudoku9x9Vue();
         SudokuEtoileVue sEtoile = new SudokuEtoileVue();
         boolean keepGoing = true;
         System.out.println("Bienvenu sur SudokuAlgorithm");
@@ -36,7 +37,10 @@ public class Main {
                 Sudoku4x4Controller controller = new Sudoku4x4Controller(model, view);
                 controller.start();
             } else if (opt.equals("2")) {
-                s9.show();
+                Sudoku9x9 model = new Sudoku9x9();
+                Sudoku9x9Vue view = new Sudoku9x9Vue(model);
+                Sudoku9x9Controller controller = new Sudoku9x9Controller(model, view);
+                controller.start();
             } else if (opt.equals("3")) {
                 sEtoile.show();
             } else {
