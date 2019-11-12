@@ -38,4 +38,8 @@ public class Sudoku4x4 {
     public char[] getValues() {
         return this.values;
     }
+
+    public void delete(Position4x4 p) {
+        values[p.getPos()] = EMPTY;
+    }
 }

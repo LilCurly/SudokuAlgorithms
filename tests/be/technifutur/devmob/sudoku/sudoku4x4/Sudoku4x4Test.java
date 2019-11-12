@@ -72,4 +72,29 @@ class Sudoku4x4Test {
         }
         assertTrue(s.isComplete());
     }
+
+    /*
+        Testing if delete() deletes the value at the given position and sets it back to an empty value
+     */
+    @Test
+    void testDeleteSetsBackValueToEmpty() {
+        Sudoku4x4 s = new Sudoku4x4();
+        Position4x4 p = new Position4x4(9);
+        s.add(p, '2');
+        assertEquals('2', s.get(p), String.format("Should get 2 but got %s", s.get(p)));
+        s.delete(p);
+        assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should get empty but got %s", s.get(p)));
+    }
+
+    /*
+        Testing if delete() on an empty value does not change the value
+     */
+    @Test
+    void testDeleteDoesNotChangeEmptyValue() {
+        Sudoku4x4 s = new Sudoku4x4();
+        Position4x4 p = new Position4x4(2);
+        assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
+        s.delete(p);
+        assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
+    }
 }
