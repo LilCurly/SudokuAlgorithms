@@ -32,7 +32,10 @@ public class Sudoku4x4Controller {
                 int row = Integer.parseInt(regexValues[0]);
                 int col = Integer.parseInt(regexValues[1]);
                 char value = regexValues[2].charAt(0);
-                boolean result = model.add(new Position4x4(col - 1, row - 1), value);
+                boolean result = false;
+                if(Position4x4.isValid(col - 1, row - 1)) {
+                    result = model.add(new Position4x4(col - 1, row - 1), value);
+                }
                 if(result) {
                     view.update();
                     if(model.isComplete()) {
