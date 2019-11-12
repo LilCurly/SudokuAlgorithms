@@ -105,4 +105,27 @@ class Position4x4Test {
         assertEquals(1, s2.getColSector(), String.format("Pos 6 should give Sector Col 1 but got %d", s2.getColSector()));
         assertEquals(1, s3.getColSector(), String.format("Pos 14 should give Sector Col 1 but got %d", s3.getColSector()));
     }
+
+    /*
+        Testing if isValid() returns false when giving a position out of the limits
+     */
+    @Test
+    void testIsValidReturnsFalseWhenOutOfLimits() {
+        assertFalse(Position4x4.isValid(-1));
+        assertFalse(Position4x4.isValid(16));
+        assertFalse(Position4x4.isValid(35));
+        assertFalse(Position4x4.isValid(-1, 2));
+        assertFalse(Position4x4.isValid(2, -1));
+    }
+
+    /*
+        Testing if isValid() returns true when giving a valid position
+     */
+    @Test
+    void testIsValidReturnsTrueWithValidPosition() {
+        assertTrue(Position4x4.isValid(0));
+        assertTrue(Position4x4.isValid(15));
+        assertTrue(Position4x4.isValid(5));
+        assertTrue(Position4x4.isValid(0, 8));
+    }
 }

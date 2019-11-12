@@ -38,4 +38,20 @@ public class Position4x4 {
     public int getPos() {
         return pos;
     }
+
+    public static boolean isValid(int pos) {
+        boolean result = true;
+        if(pos < 0 || pos >= 16) {
+            result = false;
+        }
+        return result;
+    }
+
+    public static boolean isValid(int col, int row) {
+        boolean result = true;
+        if((col < 0 || col >= 4) || (row < 0 || row >= 4)) {
+            result = false;
+        }
+        return result;
+    }
 }
