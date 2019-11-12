@@ -35,7 +35,14 @@ public class Sudoku4x4Controller {
                 boolean result = model.add(new Position4x4(col - 1, row - 1), value);
                 if(result) {
                     view.update();
-                    view.show(String.format("%s ajouté à la ligne %d et la colonne %d", value, row, col));
+                    if(model.isComplete()) {
+                        view.show(String.format("%s ajouté à la ligne %d et la colonne %d\nSudoku terminé!", value, row, col));
+                        view.prompt("Entrez n'importe quelle valeur pour quitter le Sudoku: ");
+                        isOver = true;
+                    }
+                    else {
+                        view.show(String.format("%s ajouté à la ligne %d et la colonne %d", value, row, col));
+                    }
                 }
                 else {
                     view.show(String.format("%s ne peut pas être ajouté à la ligne %d et la colonne %d", value, row, col));
