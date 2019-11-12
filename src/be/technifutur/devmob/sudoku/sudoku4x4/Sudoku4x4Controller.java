@@ -21,7 +21,7 @@ public class Sudoku4x4Controller {
             Pattern p = Pattern.compile("^\\d\\.\\d\\.\\d");
             Matcher m;
             do {
-                entry = view.prompt("Entrez une valeur dans le format : {ligne}.{colonne}.{valeur} pour entrer une nouvelle valeur ou 0 pour quitter :");
+                entry = view.prompt("Entrez une valeur dans le format : {ligne}.{colonne}.{valeur} pour entrer une nouvelle valeur ou 0 pour quitter : ");
                 m = p.matcher(entry);
             } while(!entry.equals("0") && !m.matches());
             if(entry.equals("0")) {

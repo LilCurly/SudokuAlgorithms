@@ -9,6 +9,7 @@ import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Vue;
 import be.technifutur.devmob.sudoku.sudokuEtoile.SudokuEtoileVue;
 import be.technifutur.devmob.sudoku.utils.User;
 import be.technifutur.devmob.sudoku.utils.UserConsole;
+import be.technifutur.devmob.sudoku.utils.UserFake;
 
 import java.util.Scanner;
 
@@ -34,13 +35,17 @@ public class Main {
                 opt = in.nextLine();
             }
             if (opt.equals("1")) {
+                User fakeUser = new UserFake(4);
                 Sudoku4x4 model = new Sudoku4x4();
                 Sudoku4x4Vue view = new Sudoku4x4Vue(model);
+                view.setUser(fakeUser);
                 Sudoku4x4Controller controller = new Sudoku4x4Controller(model, view);
                 controller.start();
             } else if (opt.equals("2")) {
+                User fakeUser = new UserFake(9);
                 Sudoku9x9 model = new Sudoku9x9();
                 Sudoku9x9Vue view = new Sudoku9x9Vue(model);
+                view.setUser(fakeUser);
                 Sudoku9x9Controller controller = new Sudoku9x9Controller(model, view);
                 controller.start();
             } else if (opt.equals("3")) {
