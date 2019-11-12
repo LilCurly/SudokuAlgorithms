@@ -32,7 +32,10 @@ public class Sudoku9x9Controller {
                 int row = Integer.parseInt(values[0]);
                 int col = Integer.parseInt(values[1]);
                 char val = values[2].charAt(0);
-                boolean result = model.add(new Position9x9(col - 1, row - 1), val);
+                boolean result = false;
+                if(Position9x9.isValid(col - 1, row - 1)) {
+                    result = model.add(new Position9x9(col - 1, row - 1), val);
+                }
                 if(result) {
                     view.update();
                     if(model.isComplete()) {
