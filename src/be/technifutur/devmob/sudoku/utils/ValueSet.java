@@ -1,6 +1,8 @@
 package be.technifutur.devmob.sudoku.utils;
 
-public class ValueSet {
+import java.util.Iterator;
+
+public class ValueSet implements Iterable<Integer> {
     private int data;
 
     public ValueSet() {
@@ -38,5 +40,34 @@ public class ValueSet {
             result = true;
         }
         return result;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new ValueSetIterator();
+    }
+
+    private class ValueSetIterator implements Iterator<Integer> {
+        private int position = 0;
+
+        @Override
+        public boolean hasNext() {
+            boolean result = true;
+            if(Integer.bitCount(data >>> position) == 0) result = false;
+            return result;
+        }
+
+        @Override
+        public Integer next() {
+            if(hasNext()) {
+                for(int i = position; i < 9; i++) {
+                    if((data >>> i & 1) == 1) {
+                        position = ++i;
+                        return position;
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

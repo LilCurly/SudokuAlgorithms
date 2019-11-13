@@ -3,6 +3,8 @@ package be.technifutur.devmob.sudoku.utils;
 import com.sun.jdi.Value;
 import org.junit.jupiter.api.Test;
 
+import java.util.Iterator;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValueSetTest {
@@ -88,5 +90,65 @@ class ValueSetTest {
         assertFalse(set.contains('4'));
         set.delete('5');
         assertFalse(set.contains('5'));
+    }
+
+    /*
+        Testing if ValueSetIterator hasNext() returns false when there is no value
+     */
+    @Test
+    void testIteratorHasNextReturnsFalseWhenNoValue() {
+        ValueSet set = new ValueSet();
+        Iterator iterator = set.iterator();
+        assertFalse(iterator.hasNext());
+    }
+
+    /*
+        Testing if ValueSetIterator hasNext() returns true when there is one value
+     */
+    @Test
+    void testIteratorHasNextReturnsTrueWhenOneValue() {
+        ValueSet set = new ValueSet();
+        set.add('5');
+        Iterator iterator = set.iterator();
+        assertTrue(iterator.hasNext());
+    }
+
+    /*
+        Testing if ValueSetIterator next() returns null when there is no values
+     */
+    @Test
+    void testIteratorNextReturnsFalseWhenNoValue() {
+        ValueSet set = new ValueSet();
+        Iterator iterator = set.iterator();
+        assertNull(iterator.next());
+    }
+
+    /*
+        Testing if ValueSetIterator next() returns the correct value when there is one value
+     */
+    @Test
+    void testIteratorNextReturnsCorrectValueWhenThereIsOne() {
+        ValueSet set = new ValueSet();
+        Iterator iterator = set.iterator();
+        assertNull(iterator.next());
+        set.add('5');
+        assertEquals(5, iterator.next());
+    }
+
+    /*
+        Testing if ValueSetIterator hasNext() returns true when there is two or more values
+     */
+    @Test
+    void testIteratorHasNextReturnsTrueWhenMoreThanOneValue() {
+        ValueSet set = new ValueSet();
+        set.add('1');
+        set.add('6');
+        Iterator iterator = set.iterator();
+        assertTrue(iterator.hasNext());
+        assertEquals(1 ,iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(6 ,iterator.next());
+        assertFalse(iterator.hasNext());
+        assertNull(iterator.next());
     }
 }
