@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.utils;
 
+import static java.lang.Thread.sleep;
+
 public class UserFake implements User {
     private GridGenerator gg = new GridGenerator();
     private String[] values;
@@ -18,6 +20,12 @@ public class UserFake implements User {
     @Override
     public String prompt(String message) {
         System.out.println(message);
-        return valuesCpt < values.length ? values[valuesCpt++] : " ";
+        try {
+            sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(valuesCpt < values.length ? values[valuesCpt] : "0");
+        return valuesCpt < values.length ? values[valuesCpt++] : "0";
     }
 }
