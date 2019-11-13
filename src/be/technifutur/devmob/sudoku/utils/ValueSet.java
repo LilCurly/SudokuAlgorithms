@@ -7,7 +7,36 @@ public class ValueSet {
         this.data = 0;
     }
 
-    public void add(char val) {
+    public boolean isEmpty() {
+        return this.data == 0;
+    }
 
+    public boolean add(char val) {
+        int intVal = Character.getNumericValue(val) - 1;
+        boolean result = false;
+        if (!contains(val)) {
+            data |= 1 << intVal;
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean contains(char val) {
+        int intVal = Character.getNumericValue(val) - 1;
+        boolean result = false;
+        if ((data >> intVal & 1) == 1) {
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean delete(char val) {
+        int intVal = Character.getNumericValue(val) - 1;
+        boolean result = false;
+        if (contains(val)) {
+            data ^= 1 << intVal;
+            result = true;
+        }
+        return result;
     }
 }
