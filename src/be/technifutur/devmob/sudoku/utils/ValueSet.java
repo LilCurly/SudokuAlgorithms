@@ -4,9 +4,11 @@ import java.util.Iterator;
 
 public class ValueSet implements Iterable<Integer> {
     private int data;
+    private int size;
 
-    public ValueSet() {
+    public ValueSet(int size) {
         this.data = 0;
+        this.size = size;
     }
 
     public boolean isEmpty() {
@@ -64,7 +66,7 @@ public class ValueSet implements Iterable<Integer> {
         @Override
         public Integer next() {
             if(hasNext()) {
-                for(int i = position; i < 9; i++) {
+                for(int i = position; i < size; i++) {
                     if((data >>> i & 1) == 1) {
                         position = ++i;
                         return position;

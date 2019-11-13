@@ -13,7 +13,7 @@ class ValueSetTest {
      */
     @Test
     void testIsDataEmptyWhenObjectCreated() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         assertTrue(set.isEmpty());
     }
 
@@ -22,7 +22,7 @@ class ValueSetTest {
      */
     @Test
     void testNotEmptyAfterAddingNewValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         assertTrue(set.add('1'));
         assertFalse(set.isEmpty());
     }
@@ -32,7 +32,7 @@ class ValueSetTest {
      */
     @Test
     void testAddingTwoValuesReturnsFalseSecondTime() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         assertTrue(set.add('1'));
         assertFalse(set.add('1'));
     }
@@ -42,7 +42,7 @@ class ValueSetTest {
      */
     @Test
     void testContainsReturnsFalseWhenValueSetDoesNotContainValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         assertFalse(set.contains('2'));
     }
 
@@ -51,7 +51,7 @@ class ValueSetTest {
      */
     @Test
     void testContainsReturnsTrueWhenValueSetContainsValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         set.add('2');
         assertTrue(set.contains('2'));
     }
@@ -61,7 +61,7 @@ class ValueSetTest {
      */
     @Test
     void testDeletingReturnsFalseWhenValueDoesNotExist() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         assertFalse(set.delete('3'));
     }
 
@@ -70,7 +70,7 @@ class ValueSetTest {
      */
     @Test
     void testDeletingValueThatExistsReturnsTrue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         set.add('3');
         assertTrue(set.delete('3'));
     }
@@ -80,7 +80,7 @@ class ValueSetTest {
      */
     @Test
     void testDeletingValueThatExistsDeletesCorrectValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         set.add('5');
         set.add('4');
         assertTrue(set.contains('5'));
@@ -97,7 +97,7 @@ class ValueSetTest {
      */
     @Test
     void testIteratorHasNextReturnsFalseWhenNoValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         Iterator iterator = set.iterator();
         assertFalse(iterator.hasNext());
     }
@@ -107,7 +107,7 @@ class ValueSetTest {
      */
     @Test
     void testIteratorHasNextReturnsTrueWhenOneValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         set.add('5');
         Iterator iterator = set.iterator();
         assertTrue(iterator.hasNext());
@@ -118,7 +118,7 @@ class ValueSetTest {
      */
     @Test
     void testIteratorNextReturnsFalseWhenNoValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         Iterator iterator = set.iterator();
         assertNull(iterator.next());
     }
@@ -128,7 +128,7 @@ class ValueSetTest {
      */
     @Test
     void testIteratorNextReturnsCorrectValueWhenThereIsOne() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         Iterator iterator = set.iterator();
         assertNull(iterator.next());
         set.add('5');
@@ -140,7 +140,7 @@ class ValueSetTest {
      */
     @Test
     void testIteratorHasNextReturnsTrueWhenMoreThanOneValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         set.add('1');
         set.add('6');
         Iterator iterator = set.iterator();
@@ -157,7 +157,7 @@ class ValueSetTest {
      */
     @Test
     void testSizeReturns0WhenThereIsNoValues() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         assertEquals(0, set.size());
     }
 
@@ -166,7 +166,7 @@ class ValueSetTest {
      */
     @Test
     void testSizeReturnsValueGreaterThan0IfThereIsMoreThanOneValue() {
-        ValueSet set = new ValueSet();
+        ValueSet set = new ValueSet(9);
         set.add('1');
         assertEquals(1, set.size());
         set.add('4');
