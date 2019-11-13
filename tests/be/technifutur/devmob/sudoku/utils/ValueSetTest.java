@@ -151,4 +151,27 @@ class ValueSetTest {
         assertFalse(iterator.hasNext());
         assertNull(iterator.next());
     }
+
+    /*
+        Testing if size() returns 0 when there is no values
+     */
+    @Test
+    void testSizeReturns0WhenThereIsNoValues() {
+        ValueSet set = new ValueSet();
+        assertEquals(0, set.size());
+    }
+
+    /*
+        Testing if size() returns a value > 0 when there is more than one value
+     */
+    @Test
+    void testSizeReturnsValueGreaterThan0IfThereIsMoreThanOneValue() {
+        ValueSet set = new ValueSet();
+        set.add('1');
+        assertEquals(1, set.size());
+        set.add('4');
+        assertEquals(2, set.size());
+        set.add('9');
+        assertEquals(3, set.size());
+    }
 }

@@ -42,6 +42,10 @@ public class ValueSet implements Iterable<Integer> {
         return result;
     }
 
+    public int size() {
+        return Integer.bitCount(data);
+    }
+
     @Override
     public Iterator<Integer> iterator() {
         return new ValueSetIterator();
