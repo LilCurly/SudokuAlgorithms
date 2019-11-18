@@ -39,7 +39,7 @@ class Sudoku4x4Test {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(5);
         assertTrue(s.add(p, '1'));
-        assertEquals('1', s.getValues()[p.getPos()].getValue());
+        assertEquals('1', s.get(p));
     }
 
     /*
