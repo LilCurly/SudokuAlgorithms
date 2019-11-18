@@ -7,7 +7,11 @@ public class AutoCompletor {
 
     }
 
-    private static char[] generatePossibleValues(int length) {
-
+    public static char[] generatePossibleValues(int length) {
+        char[] vals = new char[length];
+        for(int i = 0; i < vals.length; i++) {
+            vals[i] = Character.forDigit(i+1, 10);
+        }
+        return vals;
     }
 }
