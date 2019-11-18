@@ -32,6 +32,28 @@ public class Cellule {
         return result;
     }
 
+    public boolean updateValue(char value) {
+        boolean result = canBeSet(value);
+        if(result && this.value == Sudoku4x4.EMPTY) {
+            for(ValueSet vsItem : this.vs) {
+                vsItem.delete(this.value);
+                vsItem.add(value);
+            }
+            this.value = value;
+        }
+        return result;
+    }
+
+    public boolean deleteValue() {
+        boolean result = true;
+        int index = 0;
+        while(result && index < vs.size()) {
+            result = vs.get(index).delete(this.value);
+            index++;
+        }
+        return result;
+    }
+
     private boolean canBeSet(char value) {
         boolean result = isModifiable;
         int index = 0;
