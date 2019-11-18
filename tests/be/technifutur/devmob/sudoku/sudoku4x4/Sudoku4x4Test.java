@@ -47,10 +47,11 @@ class Sudoku4x4Test {
      */
     @Test
     void testAddingNotCorrectValueAtPositionDoesNotAddValueToArray() {
-        Sudoku4x4 s = new Sudoku4x4();
-        boolean isAdded = s.add(new Position4x4(5), 'z');
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        Position4x4 p = new Position4x4(5);
+        boolean isAdded = s.add(p, 'z');
         assertFalse(isAdded);
-        assertEquals(Sudoku4x4.EMPTY, s.getValues()[5]);
+        assertEquals(Sudoku4x4.EMPTY, s.getValues()[p.getPos()].getValue());
     }
 
     /*
