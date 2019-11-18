@@ -112,4 +112,13 @@ class CelluleTest {
         assertTrue(cell1.setValue('1'));
         assertTrue(cell2.setValue('2'));
     }
+
+    /*
+        Test n°10 : Testing if a Cell can be modified after being created
+     */
+    @Test
+    void testCellCanBeModifiedAfterBeingCreater() {
+        Cellule cell = new Cellule();
+        assertFalse(cell.isLocked());
+    }
 }
