@@ -72,4 +72,16 @@ class CelluleTest {
         cell.setValue('3');
         assertFalse(cell.setValue('3'));
     }
+
+    /*
+        Test N°7 : Testing if two different values can be add
+     */
+    @Test
+    void testTwoDifferentValuesCanBeAdded() {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        cell.addValueSet(new ValueSet(4));
+        assertTrue(cell.setValue('1'));
+        assertTrue(cell.setValue('2'));
+    }
 }
