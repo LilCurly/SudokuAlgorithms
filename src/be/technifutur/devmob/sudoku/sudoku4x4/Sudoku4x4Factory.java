@@ -1,6 +1,8 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
 import be.technifutur.devmob.sudoku.Cellule;
+import be.technifutur.devmob.sudoku.utils.User;
+import be.technifutur.devmob.sudoku.utils.UserConsole;
 import be.technifutur.devmob.sudoku.utils.ValueSet;
 
 public class Sudoku4x4Factory {
@@ -21,5 +23,21 @@ public class Sudoku4x4Factory {
             model.setCellule(new Position4x4(i), cell);
         }
         return model;
+    }
+
+    public static Sudoku4x4Vue getSudokuView(Sudoku4x4 model, User user) {
+        Sudoku4x4Vue view = new Sudoku4x4Vue(model);
+        view.setUser(user);
+        return view;
+    }
+
+    public static Sudoku4x4Controller getSudoku4x4(User user) {
+        Sudoku4x4 model = getSudokuModel();
+        return new Sudoku4x4Controller(model, getSudokuView(model, user));
+    }
+
+    public static Sudoku4x4Controller getSudoku4x4() {
+        Sudoku4x4 model = getSudokuModel();
+        return new Sudoku4x4Controller(model, getSudokuView(model, new UserConsole()));
     }
 }
