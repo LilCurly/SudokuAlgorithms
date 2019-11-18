@@ -43,9 +43,18 @@ public class Sudoku4x4 {
         return this.values;
     }
 
-//    public void delete(Position4x4 p) {
-//        values[p.getPos()] = EMPTY;
-//    }
+    public boolean delete(Position4x4 p) {
+        return values[p.getPos()].deleteValue();
+    }
+
+    public boolean update(Position4x4 p, char val) {
+        boolean result = false;
+        if(val >= '1' && val <= '4') {
+            result = values[p.getPos()].updateValue(val);
+        }
+        return result;
+    }
+
     public void lock() {
         locked = true;
         for(Cellule c : values) {
