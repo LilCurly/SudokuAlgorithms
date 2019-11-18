@@ -17,4 +17,15 @@ class CelluleTest {
         cell.addValueSet(new ValueSet(4));
         assertEquals(1, cell.getValueSet().size());
     }
+
+    /*
+        Test N°2 : Testing if a value can be retrieved after being added
+     */
+    @Test
+    void testValueCanBeRetrievedAfterBeingAdded() {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        cell.setValue('1');
+        assertEquals('1', cell.getValue());
+    }
 }
