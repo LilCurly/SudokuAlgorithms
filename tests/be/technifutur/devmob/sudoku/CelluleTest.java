@@ -49,4 +49,15 @@ class CelluleTest {
         cell.setValue('2');
         assertFalse(cell.setValue('2'));
     }
+
+    /*
+        Test N°5 : Testing if a value can be added once with more than one ValueSet
+     */
+    @Test
+    void testValueCanBeAddedOnceWithMoreThanOneValueSet() {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        cell.addValueSet(new ValueSet(4));
+        assertTrue(cell.setValue('3'));
+    }
 }
