@@ -1,5 +1,6 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.Cellule;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,14 +8,26 @@ import static org.junit.jupiter.api.Assertions.*;
 class Sudoku4x4Test {
 
     /*
-        Testing if creating a new instance of Sudoku4x4 creates an array full of Empty cases
+        Testing if creating a new instance of Sudoku4x4 creates an array with empty cells
      */
     @Test
-    void testValuesEmptyAfterCreatingNewSudoku4x4Instance() {
-        Sudoku4x4 s = new Sudoku4x4();
-        char[] values = s.getValues();
-        for(char c : values) {
-            assertTrue(c == Sudoku4x4.EMPTY);
+    void testCellsEmptyAfterCreatingNewSudoku4x4Instance() {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        Cellule[] values = s.getValues();
+        for(Cellule c : values) {
+            assertEquals(Sudoku4x4.EMPTY, c.getValue());
+        }
+    }
+
+    /*
+        Testing if every Cells in the Sudoku4x4 Model got 3 ValueSet
+     */
+    @Test
+    void testEveryCellsGot3ValueSet() {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        Cellule[] values = s.getValues();
+        for(Cellule c : values) {
+            assertEquals(3, c.getValueSet().size());
         }
     }
 
@@ -23,10 +36,10 @@ class Sudoku4x4Test {
      */
     @Test
     void testAddingCorrectValueAtPositionAddsValueToArray() {
-        Sudoku4x4 s = new Sudoku4x4();
-        boolean isAdded = s.add(new Position4x4(5), '1');
-        assertTrue(isAdded);
-        assertEquals('1', s.getValues()[5]);
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        Position4x4 p = new Position4x4(5);
+        assertTrue(s.add(p, '1'));
+        assertEquals('1', s.getValues()[p.getPos()].getValue());
     }
 
     /*
@@ -82,7 +95,7 @@ class Sudoku4x4Test {
         Position4x4 p = new Position4x4(9);
         s.add(p, '2');
         assertEquals('2', s.get(p), String.format("Should get 2 but got %s", s.get(p)));
-        s.delete(p);
+        //s.delete(p);
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should get empty but got %s", s.get(p)));
     }
 
@@ -94,7 +107,7 @@ class Sudoku4x4Test {
         Sudoku4x4 s = new Sudoku4x4();
         Position4x4 p = new Position4x4(2);
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
-        s.delete(p);
+        //s.delete(p);
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
     }
 }
