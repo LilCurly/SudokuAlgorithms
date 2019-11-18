@@ -84,4 +84,18 @@ class CelluleTest {
         assertTrue(cell.setValue('1'));
         assertTrue(cell.setValue('2'));
     }
+
+    /*
+        Test N°8 : Testing if two distinct Cells with one similar ValueSet cannot add more than once the same value
+     */
+    @Test
+    void testTwoCellsWithSameValueSetCannotAddSameValue() {
+        Cellule cell1 = new Cellule();
+        Cellule cell2 = new Cellule();
+        ValueSet vs = new ValueSet(4);
+        cell1.addValueSet(vs);
+        cell2.addValueSet(vs);
+        assertTrue(cell1.setValue('2'));
+        assertFalse(cell2.setValue('2'));
+    }
 }
