@@ -1,6 +1,7 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
 import be.technifutur.devmob.sudoku.Cellule;
+import be.technifutur.devmob.sudoku.utils.AutoCompletor;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -80,10 +81,8 @@ class Sudoku4x4Test {
      */
     @Test
     void testIsCompleteReturnsTrueWhenTheSudokuIsFull() {
-        Sudoku4x4 s = new Sudoku4x4();
-        for(int i = 0; i < 16; i++) {
-            s.add(new Position4x4(i), '1');
-        }
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        AutoCompletor.complete(s);
         assertTrue(s.isComplete());
     }
 
