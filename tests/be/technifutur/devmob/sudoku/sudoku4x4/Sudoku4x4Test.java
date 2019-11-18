@@ -51,7 +51,7 @@ class Sudoku4x4Test {
         Position4x4 p = new Position4x4(5);
         boolean isAdded = s.add(p, 'z');
         assertFalse(isAdded);
-        assertEquals(Sudoku4x4.EMPTY, s.getValues()[p.getPos()].getValue());
+        assertEquals(Sudoku4x4.EMPTY, s.get(p));
     }
 
     /*
