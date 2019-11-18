@@ -98,4 +98,18 @@ class CelluleTest {
         assertTrue(cell1.setValue('2'));
         assertFalse(cell2.setValue('2'));
     }
+
+    /*
+        Test N°9 : Testing if two distinct Cells with one similar ValueSet can add two distinct values
+     */
+    @Test
+    void testTwoCellsWithSameValueSetCanAddTwoDifferentValues() {
+        Cellule cell1 = new Cellule();
+        Cellule cell2 = new Cellule();
+        ValueSet vs = new ValueSet(4);
+        cell1.addValueSet(vs);
+        cell2.addValueSet(vs);
+        assertTrue(cell1.setValue('1'));
+        assertTrue(cell2.setValue('2'));
+    }
 }
