@@ -28,4 +28,14 @@ class CelluleTest {
         cell.setValue('1');
         assertEquals('1', cell.getValue());
     }
+
+    /*
+        Test n°3 : Testing if a value can be added once with one ValueSet
+     */
+    @Test
+    void testValueCanBeAddedOnceWithOneValueSet() {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        assertTrue(cell.setValue('1'));
+    }
 }
