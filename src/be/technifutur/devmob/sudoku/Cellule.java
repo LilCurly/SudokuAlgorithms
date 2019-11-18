@@ -51,6 +51,9 @@ public class Cellule {
             result = vs.get(index).delete(this.value);
             index++;
         }
+        if(result) {
+            this.value = Sudoku4x4.EMPTY;
+        }
         return result;
     }
 
