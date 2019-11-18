@@ -34,13 +34,14 @@ public class Cellule {
 
     public boolean updateValue(char value) {
         boolean result = canBeSet(value);
-        if(result && this.value == Sudoku4x4.EMPTY) {
+        if(result && this.value != Sudoku4x4.EMPTY) {
             for(ValueSet vsItem : this.vs) {
                 vsItem.delete(this.value);
                 vsItem.add(value);
             }
             this.value = value;
         }
+        else result = false;
         return result;
     }
 
