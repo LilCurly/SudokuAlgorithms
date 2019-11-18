@@ -36,7 +36,8 @@ public class Cellule {
         boolean result = true;
         int index = 0;
         while(result && index < vs.size()) {
-            result = this.vs.get(index).contains(value);
+            result = !this.vs.get(index).contains(value);
+            index += 1;
         }
         return result;
     }
