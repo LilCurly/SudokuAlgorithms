@@ -3,6 +3,8 @@ package be.technifutur.devmob.sudoku;
 import be.technifutur.devmob.sudoku.utils.ValueSet;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CelluleTest {
@@ -120,5 +122,17 @@ class CelluleTest {
     void testCellCanBeModifiedAfterBeingCreater() {
         Cellule cell = new Cellule();
         assertFalse(cell.isLocked());
+    }
+
+    /*
+        Test N°11 : Testing if a Cell cannot be modified after being locked
+     */
+    @Test
+    void testCellCannotBeModifiedAfterBeingLocked() {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        cell.lock();
+        assertTrue(cell.isLocked());
+        assertFalse(cell.setValue('1'));
     }
 }
