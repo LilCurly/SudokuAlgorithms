@@ -33,7 +33,7 @@ public class Cellule {
     }
 
     private boolean canBeSet(char value) {
-        boolean result = true;
+        boolean result = isModifiable;
         int index = 0;
         while(result && index < vs.size()) {
             result = !this.vs.get(index).contains(value);
