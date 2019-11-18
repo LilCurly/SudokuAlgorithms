@@ -38,4 +38,15 @@ class CelluleTest {
         cell.addValueSet(new ValueSet(4));
         assertTrue(cell.setValue('1'));
     }
+
+    /*
+        Test N°4 : Testing if a value cannot be added more than once with one ValueSet
+     */
+    @Test
+    void testValueCannotBeAddedMoreThanOnceWithOneValueSet() {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        cell.setValue('2');
+        assertFalse(cell.setValue('2'));
+    }
 }
