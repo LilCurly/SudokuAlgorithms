@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Sudoku4x4Test {
 
     /*
-        Testing if creating a new instance of Sudoku4x4 creates an array with empty cells
+        Test N°1 : Testing if creating a new instance of Sudoku4x4 creates an array with empty cells
      */
     @Test
     void testCellsEmptyAfterCreatingNewSudoku4x4Instance() {
@@ -20,7 +20,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if every Cells in the Sudoku4x4 Model got 3 ValueSet
+        Test N°2 : Testing if every Cells in the Sudoku4x4 Model got 3 ValueSet
      */
     @Test
     void testEveryCellsGot3ValueSet() {
@@ -32,7 +32,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if adding a new value that is correct at a given Position4x4 correctly adds it to the values array
+        Test N°3 : Testing if adding a new value that is correct at a given Position4x4 correctly adds it to the values array
      */
     @Test
     void testAddingCorrectValueAtPositionAddsValueToArray() {
@@ -43,7 +43,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if adding a new value that is not correct at a given Position4x4 doesn't add it to the values array
+        Test N°4 : Testing if adding a new value that is not correct at a given Position4x4 doesn't add it to the values array
      */
     @Test
     void testAddingNotCorrectValueAtPositionDoesNotAddValueToArray() {
@@ -54,7 +54,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if getting the value at a given Position returns the correct value
+        Test N°5 : Testing if getting the value at a given Position returns the correct value
      */
     @Test
     void testGetValueReturnsTheCorrectValue() {
@@ -65,7 +65,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if isComplete() returns false when the sudoku is not full yet
+        Test N°6 : Testing if isComplete() returns false when the sudoku is not full yet
      */
     @Test
     void testIsCompleteReturnsFalseWhenTheSudokuIsNotFull() {
@@ -75,7 +75,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if isComplete() returns true when the sudoky is full
+        Test N°7 : Testing if isComplete() returns true when the sudoky is full
      */
     @Test
     void testIsCompleteReturnsTrueWhenTheSudokuIsFull() {
@@ -87,7 +87,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if delete() deletes the value at the given position and sets it back to an empty value
+        Test N°8 : Testing if delete() deletes the value at the given position and sets it back to an empty value
      */
     @Test
     void testDeleteSetsBackValueToEmpty() {
@@ -100,7 +100,7 @@ class Sudoku4x4Test {
     }
 
     /*
-        Testing if delete() on an empty value does not change the value
+        Test N°9 : Testing if delete() on an empty value does not change the value
      */
     @Test
     void testDeleteDoesNotChangeEmptyValue() {
