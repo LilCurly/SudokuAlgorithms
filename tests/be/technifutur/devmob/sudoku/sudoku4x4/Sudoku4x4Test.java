@@ -70,7 +70,7 @@ class Sudoku4x4Test {
      */
     @Test
     void testIsCompleteReturnsFalseWhenTheSudokuIsNotFull() {
-        Sudoku4x4 s = new Sudoku4x4();
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         s.add(new Position4x4(10), '2');
         assertFalse(s.isComplete());
     }
