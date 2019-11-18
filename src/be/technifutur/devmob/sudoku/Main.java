@@ -2,6 +2,7 @@ package be.technifutur.devmob.sudoku;
 
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Controller;
+import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Factory;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Vue;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Controller;
@@ -34,24 +35,27 @@ public class Main {
                 System.out.print("Votre choix : ");
                 opt = in.nextLine();
             }
-            if (opt.equals("1")) {
-                User fakeUser = new UserFake(4);
-                Sudoku4x4 model = new Sudoku4x4();
-                Sudoku4x4Vue view = new Sudoku4x4Vue(model);
-                view.setUser(fakeUser);
-                Sudoku4x4Controller controller = new Sudoku4x4Controller(model, view);
-                controller.start();
-            } else if (opt.equals("2")) {
-                User fakeUser = new UserFake(9);
-                Sudoku9x9 model = new Sudoku9x9();
-                Sudoku9x9Vue view = new Sudoku9x9Vue(model);
-                view.setUser(fakeUser);
-                Sudoku9x9Controller controller = new Sudoku9x9Controller(model, view);
-                controller.start();
-            } else if (opt.equals("3")) {
-                sEtoile.show();
-            } else {
-              keepGoing = false;
+            switch (opt) {
+                case "1": {
+                    Sudoku4x4Controller controller = Sudoku4x4Factory.getSudoku4x4();
+                    controller.start();
+                    break;
+                }
+                case "2": {
+                    User fakeUser = new UserFake(9);
+                    Sudoku9x9 model = new Sudoku9x9();
+                    Sudoku9x9Vue view = new Sudoku9x9Vue(model);
+                    view.setUser(fakeUser);
+                    Sudoku9x9Controller controller = new Sudoku9x9Controller(model, view);
+                    controller.start();
+                    break;
+                }
+                case "3":
+                    sEtoile.show();
+                    break;
+                default:
+                    keepGoing = false;
+                    break;
             }
         }
     }
