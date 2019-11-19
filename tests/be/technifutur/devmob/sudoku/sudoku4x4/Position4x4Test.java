@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.PositionInvalidException;
+import be.technifutur.devmob.sudoku.SudokuException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -110,22 +112,22 @@ class Position4x4Test {
         Testing if isValid() returns false when giving a position out of the limits
      */
     @Test
-    void testIsValidReturnsFalseWhenOutOfLimits() {
-        assertFalse(Position4x4.isValid(-1));
-        assertFalse(Position4x4.isValid(16));
-        assertFalse(Position4x4.isValid(35));
-        assertFalse(Position4x4.isValid(-1, 2));
-        assertFalse(Position4x4.isValid(2, -1));
+    void testIsValidReturnsFalseWhenOutOfLimits() throws SudokuException {
+        assertThrows(PositionInvalidException.class, () -> Position4x4.isValid(-1));
+        assertThrows(PositionInvalidException.class, () -> Position4x4.isValid(16));
+        assertThrows(PositionInvalidException.class, () -> Position4x4.isValid(35));
+        assertThrows(PositionInvalidException.class, () -> Position4x4.isValid(-1, 2));
+        assertThrows(PositionInvalidException.class, () -> Position4x4.isValid(2, -1));
     }
 
     /*
         Testing if isValid() returns true when giving a valid position
      */
     @Test
-    void testIsValidReturnsTrueWithValidPosition() {
+    void testIsValidReturnsTrueWithValidPosition() throws SudokuException {
         assertTrue(Position4x4.isValid(0));
         assertTrue(Position4x4.isValid(15));
         assertTrue(Position4x4.isValid(5));
-        assertTrue(Position4x4.isValid(0, 8));
+        assertTrue(Position4x4.isValid(0, 3));
     }
 }
