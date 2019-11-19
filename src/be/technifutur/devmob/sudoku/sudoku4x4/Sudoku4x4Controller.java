@@ -1,6 +1,8 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
 import be.technifutur.devmob.sudoku.CellLockedException;
+import be.technifutur.devmob.sudoku.PositionInvalidException;
+import be.technifutur.devmob.sudoku.SudokuException;
 import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
 
 import java.util.regex.Matcher;
@@ -47,17 +49,23 @@ public class Sudoku4x4Controller {
                 int col = Integer.parseInt(regexValues[1]);
                 char value = regexValues[2].charAt(0);
                 boolean result = false;
-                if(Position4x4.isValid(col - 1, row - 1) && addMatcher.matches()) {
+                boolean validPosition = false;
+                try {
+                    validPosition = Position4x4.isValid(col - 1, row - 1);
+                } catch (PositionInvalidException e) {
+                    System.out.println(e.getMessage());
+                }
+                if(validPosition && addMatcher.matches()) {
                     try {
                         result = model.add(new Position4x4(col - 1, row - 1), value);
-                    } catch (ValueAlreadyDefinedException | CellLockedException e) {
+                    } catch (SudokuException e) {
                         System.out.println(e.getMessage());
                     }
                 }
-                else if(Position4x4.isValid(col - 1, row - 1) && updateMatcher.matches()) {
+                else if(validPosition && updateMatcher.matches()) {
                     try {
                         result = model.update(new Position4x4(col - 1, row - 1), value);
-                    } catch (ValueAlreadyDefinedException | CellLockedException e) {
+                    } catch (SudokuException e) {
                         System.out.println(e.getMessage());
                     }
                 }
