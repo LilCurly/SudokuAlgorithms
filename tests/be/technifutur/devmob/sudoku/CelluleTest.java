@@ -1,10 +1,7 @@
 package be.technifutur.devmob.sudoku;
 
 import be.technifutur.devmob.sudoku.utils.ValueSet;
-import com.sun.jdi.Value;
 import org.junit.jupiter.api.Test;
-
-import javax.swing.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -134,6 +131,6 @@ class CelluleTest {
         cell.addValueSet(new ValueSet(4));
         cell.lock();
         assertTrue(cell.isLocked());
-        assertFalse(cell.setValue('1'));
+        assertThrows(CellLockedException.class, () -> cell.setValue('1'));
     }
 }
