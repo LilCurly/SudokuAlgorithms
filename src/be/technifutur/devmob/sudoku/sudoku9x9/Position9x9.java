@@ -44,7 +44,7 @@ public class Position9x9 {
     public static boolean isValid(int pos) throws PositionInvalidException {
         boolean result = true;
         if(pos < 0 || pos >= 81) {
-            throw new PositionInvalidException(pos);
+            throw new PositionInvalidException(pos, 81);
         }
         return result;
     }
@@ -52,7 +52,7 @@ public class Position9x9 {
     public static boolean isValid(int col, int row) throws PositionInvalidException {
         boolean result = true;
         if((col < 0 || col >= 9) || (row < 0 || row >= 9)) {
-            throw new PositionInvalidException(col, row);
+            throw new PositionInvalidException(col, row, 9);
         }
         return result;
     }
