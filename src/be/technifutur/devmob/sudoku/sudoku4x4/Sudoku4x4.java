@@ -27,6 +27,9 @@ public class Sudoku4x4 {
         if(val >= '1' && val <= '4') {
             result = values[p.getPos()].setValue(val);
         }
+        else {
+            throw new ValueOutOfBoundException(4, val);
+        }
         return result;
     }
 
@@ -57,6 +60,9 @@ public class Sudoku4x4 {
         }
         if(val >= '1' && val <= '4') {
             result = values[p.getPos()].updateValue(val);
+        }
+        else {
+            throw new ValueOutOfBoundException(4, val);
         }
         return result;
     }
