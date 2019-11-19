@@ -50,7 +50,7 @@ public class Sudoku4x4 {
         return values[p.getPos()].deleteValue();
     }
 
-    public boolean update(Position4x4 p, char val) throws ValueAlreadyDefinedException, CellLockedException {
+    public boolean update(Position4x4 p, char val) throws SudokuException {
         boolean result = false;
         if(val >= '1' && val <= '4') {
             result = values[p.getPos()].updateValue(val);
