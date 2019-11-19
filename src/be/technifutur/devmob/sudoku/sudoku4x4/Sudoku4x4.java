@@ -50,7 +50,11 @@ public class Sudoku4x4 {
     }
 
     public boolean delete(Position4x4 p) throws SudokuException {
-        return values[p.getPos()].deleteValue();
+        boolean result = values[p.getPos()].deleteValue();
+        if(!result) {
+            throw new CellNotSetException(p.getRow(), p.getCol());
+        }
+        return result;
     }
 
     public boolean update(Position4x4 p, char val) throws SudokuException {
