@@ -50,9 +50,7 @@ class Sudoku4x4Test {
     void testAddingNotCorrectValueAtPositionDoesNotAddValueToArray() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(5);
-        boolean isAdded = false;
-        isAdded = s.add(p, 'z');
-        assertFalse(isAdded);
+        assertThrows(ValueOutOfBoundException.class, () -> s.add(p, 'z'));
         assertEquals(Sudoku4x4.EMPTY, s.get(p));
     }
 
