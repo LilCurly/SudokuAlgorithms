@@ -145,4 +145,17 @@ class CelluleTest {
         assertTrue(cell.isLocked());
         assertThrows(CellLockedException.class, () -> cell.updateValue('1'));
     }
+
+    /*
+        Test N°13 : Testing if a Cell value can be modified
+     */
+    @Test
+    void testCellValueCanBeModifed() throws CellLockedException, ValueAlreadyDefinedException {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        assertTrue(cell.setValue('1'));
+        assertEquals('1', cell.getValue());
+        assertTrue(cell.updateValue('2'));
+        assertEquals('2', cell.getValue());
+    }
 }
