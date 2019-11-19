@@ -21,7 +21,7 @@ public class Cellule {
         return value;
     }
 
-    public boolean setValue(char value) throws ValueAlreadyDefinedException, CellLockedException {
+    public boolean setValue(char value) throws SudokuException {
         boolean result = canBeSet(value);
         if(result) {
             this.value = value;
@@ -32,7 +32,7 @@ public class Cellule {
         return result;
     }
 
-    public boolean updateValue(char value) throws ValueAlreadyDefinedException, CellLockedException {
+    public boolean updateValue(char value) throws SudokuException {
         boolean result = canBeSet(value);
         if(result && this.value != Sudoku4x4.EMPTY) {
             for(ValueSet vsItem : this.vs) {
@@ -58,7 +58,7 @@ public class Cellule {
         return result;
     }
 
-    private boolean canBeSet(char value) throws ValueAlreadyDefinedException, CellLockedException {
+    private boolean canBeSet(char value) throws SudokuException {
         boolean result = isModifiable;
         if(!isModifiable) {
             throw new CellLockedException();
