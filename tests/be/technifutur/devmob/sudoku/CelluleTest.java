@@ -99,7 +99,7 @@ class CelluleTest {
         cell1.addValueSet(vs);
         cell2.addValueSet(vs);
         assertTrue(cell1.setValue('2'));
-        assertFalse(cell2.setValue('2'));
+        assertThrows(ValueAlreadyDefinedException.class, () -> cell2.setValue('2'));
     }
 
     /*
