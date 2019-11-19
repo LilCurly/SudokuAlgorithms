@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.sudoku9x9;
 
+import be.technifutur.devmob.sudoku.*;
+import be.technifutur.devmob.sudoku.utils.AutoCompletor;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,97 +9,169 @@ import static org.junit.jupiter.api.Assertions.*;
 class Sudoku9x9Test {
 
     /*
-        Testing if the sudoku 9x9 is instantiated with empty values
+        Test N°1 : Testing if creating a new instance of Sudoku9x9 creates an array with empty cells
      */
     @Test
     void testSudokuEmptyAfterInitiation() {
-        Sudoku9x9 s = new Sudoku9x9();
-        char[] vals = s.getValues();
-        for(char v : vals) {
-            assertEquals(Sudoku9x9.EMPTY, v, String.format("Should be empty but got %s", v));
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Cellule[] values = s.getValues();
+        for(Cellule c : values) {
+            assertEquals(Sudoku9x9.EMPTY, c.getValue());
         }
     }
 
     /*
-        Testing if the sudoku 9x9 got values that was added
+        Test N°2 : Testing if every Cells in the Sudoku9x9 Model got 3 ValueSet
      */
     @Test
-    void testSudokuGotValuesAfterAddingValidValues() {
-        Sudoku9x9 s = new Sudoku9x9();
-        assertTrue(s.add(new Position9x9(0,0), '5'));
-        assertTrue(s.add(new Position9x9(2,3), '1'));
-        assertTrue(s.add(new Position9x9(8,8), '9'));
-        assertEquals('5' ,s.getValues()[0], String.format("Should be 5 but got %s", s.getValues()[0]));
-        assertEquals('1' ,s.getValues()[29], String.format("Should be 1 but got %s", s.getValues()[29]));
-        assertEquals('9' ,s.getValues()[80], String.format("Should be 9 but got %s", s.getValues()[80]));
+    void testEveryCellsGot3ValueSet() {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Cellule[] values = s.getValues();
+        for(Cellule c : values) {
+            assertEquals(3, c.getValueSet().size());
+        }
     }
 
     /*
-        Testing if the sudoku 9x9 does not get values that was added but was not valid
+        Test N°3 : Testing if adding a new value that is correct at a given Position9x9 correctly adds it to the values array
      */
     @Test
-    void testSudokuDoesNotGetValuesAfterAddingNonValidValues() {
-        Sudoku9x9 s = new Sudoku9x9();
-        assertFalse(s.add(new Position9x9(0, 0), '0'));
-        assertEquals(Sudoku9x9.EMPTY, s.getValues()[0], String.format("Should be empty but got %s", s.getValues()[0]));
+    void testAddingCorrectValueAtPositionAddsValueToArray() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 p = new Position9x9(5);
+        assertTrue(s.add(p, '1'));
+        assertEquals('1', s.get(p));
     }
 
     /*
-        Testing if isComplete() returns false while all the squares of the sudoku are not complete
+        Test N°4 : Testing if adding a new value that is not correct at a given Position9x9 doesn't add it to the values array
      */
     @Test
-    void testIsCompleteReturnsFalseWhenSudokuIsNotComplete() {
-        Sudoku9x9 s = new Sudoku9x9();
-        s.add(new Position9x9(0), '1');
+    void testAddingNotCorrectValueAtPositionDoesNotAddValueToArray() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 p = new Position9x9(5);
+        assertThrows(ValueOutOfBoundException.class, () -> s.add(p, 'z'));
+        assertEquals(Sudoku9x9.EMPTY, s.get(p));
+    }
+
+    /*
+        Test N°5 : Testing if getting the value at a given Position returns the correct value
+     */
+    @Test
+    void testGetValueReturnsTheCorrectValue() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 pos = new Position9x9(10);
+        s.add(pos, '3');
+        assertEquals('3', s.get(pos));
+    }
+
+    /*
+        Test N°6 : Testing if isComplete() returns false when the sudoku is not full yet
+     */
+    @Test
+    void testIsCompleteReturnsFalseWhenTheSudokuIsNotFull() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        s.add(new Position9x9(10), '2');
         assertFalse(s.isComplete());
     }
 
     /*
-        Testing if isComplete() returns true when all the squares of the sudoku are complete
+        Test N°7 : Testing if isComplete() returns true when the sudoky is full
      */
     @Test
-    void testIsCompleteReturnsTrueWhenSudokuIsComplete() {
-        Sudoku9x9 s = new Sudoku9x9();
-        for(int i = 0; i <= 80; i++) {
-            s.add(new Position9x9(i), '1');
-        }
+    void testIsCompleteReturnsTrueWhenTheSudokuIsFull() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        AutoCompletor.complete(s);
         assertTrue(s.isComplete());
     }
 
     /*
-        Testing if get() returns the value at the given position
+        Test N°8 : Testing if delete() deletes the value at the given position and sets it back to an empty value
      */
     @Test
-    void testGetReturnsValueAtGivenPosition() {
-        Sudoku9x9 s = new Sudoku9x9();
-        Position9x9 pos = new Position9x9(50);
-        s.add(pos, '5');
-        assertEquals('5', s.get(pos), String.format("Should be 5 but got %s", s.get(pos)));
-        assertEquals(Sudoku9x9.EMPTY, s.get(new Position9x9(0)), String.format("Should be empty but got %s", s.get(new Position9x9(0))));
+    void testDeleteSetsBackValueToEmpty() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 p = new Position9x9(9);
+        s.add(p, '2');
+        assertEquals('2', s.get(p), String.format("Should get 2 but got %s", s.get(p)));
+        s.delete(p);
+        assertEquals(Sudoku9x9.EMPTY, s.get(p), String.format("Should get empty but got %s", s.get(p)));
     }
 
     /*
-        Testing if delete() deletes the value at a given position and sets it back to empty
+        Test N°9 : Testing if delete() on an empty value does not change the value
      */
     @Test
-    void testDeleteSetsBackTheGivenPositionToEmpty() {
-        Sudoku9x9 s = new Sudoku9x9();
-        Position9x9 pos = new Position9x9(35);
-        s.add(pos, '9');
-        assertEquals('9', s.get(pos), String.format("Should be 9 but got %s", s.get(pos)));
-        s.delete(pos);
-        assertEquals(Sudoku9x9.EMPTY, s.get(pos), String.format("Should be empty but got %s", s.get(pos)));
+    void testDeleteDoesNotChangeEmptyValue() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 p = new Position9x9(2);
+        assertEquals(Sudoku9x9.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
+        assertThrows(CellNotSetException.class, () -> s.delete(p));
+        assertEquals(Sudoku9x9.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
     }
 
     /*
-        Testing if delete() does not change anything if the value at the given position was already empty
+        Test N°10 : Testing if update() updates the value at of the cell at a given Position
      */
     @Test
-    void testDeleteDoesNotChangeIfAlreadyEmpty() {
-        Sudoku9x9 s = new Sudoku9x9();
-        Position9x9 pos = new Position9x9(35);
-        assertEquals(Sudoku9x9.EMPTY, s.get(pos), String.format("Should be empty but got %s", s.get(pos)));
-        s.delete(pos);
-        assertEquals(Sudoku9x9.EMPTY, s.get(pos), String.format("Should be empty but got %s", s.get(pos)));
+    void testUpdateUpdatesTheValueOfCellAtGivenPosition() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 p = new Position9x9(2);
+        s.add(p, '2');
+        assertEquals('2', s.get(p));
+        s.update(p, '3');
+        assertEquals('3', s.get(p));
+    }
+
+    /*
+        Test N°11 : Testing if isLocked is false when the model is created
+     */
+    @Test
+    void testIsLockedFalseWhenModelCreated() {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        assertFalse(s.isLocked());
+    }
+
+    /*
+        Test N°12 : Testing if calling lock() sets locked to false
+     */
+    @Test
+    void testCallingLockSetsLockToFalse() {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        s.lock();
+        assertTrue(s.isLocked());
+    }
+
+    /*
+        Test N°13 : Testing if after calling lock() the cells that are not empty gets locked
+     */
+    @Test
+    void testCallingLockLocksCellsThatAreNotEmpty() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 p = new Position9x9(5);
+        s.add(p, '1');
+        s.lock();
+        assertFalse(s.getCellule(new Position9x9(1)).isLocked());
+        assertTrue(s.getCellule(p).isLocked());
+    }
+
+    /*
+        Test N°14 : Testing if setting two times a value to a specific cell is not possible
+     */
+    @Test
+    void testSettingTwoTimesValueToCellNotPossible() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        Position9x9 p = new Position9x9(2);
+        assertTrue(s.add(p, '1'));
+        assertThrows(CellAlreadySetException.class, () -> s.add(p, '2'));
+    }
+
+    /*
+        Test N°15 : Testing if updating a cell that was never set is not possible
+     */
+    @Test
+    void testUpdatingCellValueThatWasNotSetIsNotPossible() throws SudokuException {
+        Sudoku9x9 s = Sudoku9x9Factory.getSudokuModel();
+        assertThrows(CellNotSetException.class, () -> s.update(new Position9x9(1), '1'));
     }
 }
