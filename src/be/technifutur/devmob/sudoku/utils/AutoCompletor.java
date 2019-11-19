@@ -6,12 +6,19 @@ import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
 
 public class AutoCompletor {
-    public static void complete(Sudoku4x4 model) throws ValueAlreadyDefinedException, CellLockedException {
+    public static void complete(Sudoku4x4 model) {
         Cellule[] cells = model.getValues();
         char[] vals = generatePossibleValues((int) Math.sqrt(cells.length));
         for(int i = 0; i < cells.length; i++) {
             int index = 0;
-            while(!cells[i].setValue(vals[index])) {
+            boolean repeat = true;
+            while(repeat) {
+                try {
+                    repeat = !cells[i].setValue(vals[index]);
+                } catch (ValueAlreadyDefinedException | CellLockedException e) {
+                    System.out.println(e.getMessage());
+                    repeat = true;
+                }
                 index++;
             }
         }
