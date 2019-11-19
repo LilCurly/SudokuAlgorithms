@@ -146,4 +146,17 @@ class Sudoku4x4Test {
         s.lock();
         assertTrue(s.isLocked());
     }
+
+    /*
+        Test N°13 : Testing if after calling lock() the cells that are not empty gets locked
+     */
+    @Test
+    void testCallingLockLocksCellsThatAreNotEmpty() throws SudokuException {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        Position4x4 p = new Position4x4(5);
+        s.add(p, '1');
+        s.lock();
+        assertFalse(s.getCellule(new Position4x4(1)).isLocked());
+        assertTrue(s.getCellule(p).isLocked());
+    }
 }
