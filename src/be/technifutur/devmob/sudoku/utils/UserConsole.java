@@ -6,7 +6,6 @@ public class UserConsole implements User {
 
     @Override
     public void show(String message) {
-        System.out.println("---------------------");
         System.out.println(message);
     }
 
