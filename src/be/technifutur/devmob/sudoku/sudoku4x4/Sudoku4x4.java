@@ -52,6 +52,9 @@ public class Sudoku4x4 {
 
     public boolean update(Position4x4 p, char val) throws SudokuException {
         boolean result = false;
+        if(this.values[p.getPos()].getValue() == EMPTY) {
+            throw new CellNotSetException(p.getRow(), p.getCol());
+        }
         if(val >= '1' && val <= '4') {
             result = values[p.getPos()].updateValue(val);
         }
