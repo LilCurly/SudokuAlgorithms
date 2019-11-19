@@ -127,4 +127,13 @@ class Sudoku4x4Test {
         s.update(p, '3');
         assertEquals('3', s.get(p));
     }
+
+    /*
+        Test N°11 : Testing if isLocked is false when the model is created
+     */
+    @Test
+    void testIsLockedFalseWhenModelCreated() {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        assertFalse(s.isLocked());
+    }
 }
