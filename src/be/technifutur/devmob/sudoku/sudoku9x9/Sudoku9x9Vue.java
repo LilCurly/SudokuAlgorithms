@@ -38,6 +38,10 @@ public class Sudoku9x9Vue {
         System.out.println(sb.toString());
     }
 
+    public void separator() {
+        System.out.println("---------------------");
+    }
+
     public void show(String message) {
         user.show(message);
     }
