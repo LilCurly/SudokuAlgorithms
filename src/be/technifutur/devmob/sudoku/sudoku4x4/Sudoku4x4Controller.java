@@ -89,7 +89,11 @@ public class Sudoku4x4Controller {
                 boolean result = false;
                 boolean validPosition = handlePositionValidation(col, row);
                 if(validPosition) {
-                    result = model.delete(new Position4x4(col - 1, row - 1));
+                    try {
+                        result = model.delete(new Position4x4(col - 1, row - 1));
+                    } catch (SudokuException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 if(result) {
                     view.update();
