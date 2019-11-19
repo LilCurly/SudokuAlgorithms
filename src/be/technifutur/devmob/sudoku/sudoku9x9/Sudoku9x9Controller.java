@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.sudoku9x9;
 
+import be.technifutur.devmob.sudoku.PositionInvalidException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,7 +36,13 @@ public class Sudoku9x9Controller {
                 int col = Integer.parseInt(values[1]);
                 char val = values[2].charAt(0);
                 boolean result = false;
-                if(Position9x9.isValid(col - 1, row - 1)) {
+                boolean positionValid = false;
+                try {
+                    positionValid = Position9x9.isValid(col - 1, row - 1);
+                } catch (PositionInvalidException e) {
+                    System.out.println(e.getMessage());
+                }
+                if(positionValid) {
                     result = model.add(new Position9x9(col - 1, row - 1), val);
                 }
                 if(result) {
