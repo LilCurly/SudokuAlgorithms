@@ -49,7 +49,7 @@ public class Sudoku4x4 {
         return this.values;
     }
 
-    public boolean delete(Position4x4 p) {
+    public boolean delete(Position4x4 p) throws SudokuException {
         return values[p.getPos()].deleteValue();
     }
 
