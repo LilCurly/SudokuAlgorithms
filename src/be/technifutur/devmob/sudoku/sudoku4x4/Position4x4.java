@@ -52,7 +52,7 @@ public class Position4x4 {
     public static boolean isValid(int col, int row) throws PositionInvalidException {
         boolean result = true;
         if((col < 0 || col >= 4) || (row < 0 || row >= 4)) {
-            throw new PositionInvalidException(col, row);
+            throw new PositionInvalidException(row, col);
         }
         return result;
     }
