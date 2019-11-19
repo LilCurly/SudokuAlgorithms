@@ -102,7 +102,7 @@ class Sudoku4x4Test {
         Test N°9 : Testing if delete() on an empty value does not change the value
      */
     @Test
-    void testDeleteDoesNotChangeEmptyValue() {
+    void testDeleteDoesNotChangeEmptyValue() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(2);
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
