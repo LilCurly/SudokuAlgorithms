@@ -20,8 +20,8 @@ public class Main {
         boolean keepGoing = true;
         System.out.println("Bienvenu sur SudokuAlgorithm");
         System.out.println("# By Roman Muzikantov");
+        System.out.println("----------------------------\n");
         while(keepGoing) {
-            System.out.println("----------------------------\n");
             System.out.println("Choisissez le sudoku à compléter:");
             System.out.println("(1) Sudoku 4x4");
             System.out.println("(2) Sudoku 9x9");
