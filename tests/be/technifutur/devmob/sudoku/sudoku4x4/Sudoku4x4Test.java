@@ -2,6 +2,7 @@ package be.technifutur.devmob.sudoku.sudoku4x4;
 
 import be.technifutur.devmob.sudoku.CellLockedException;
 import be.technifutur.devmob.sudoku.Cellule;
+import be.technifutur.devmob.sudoku.SudokuException;
 import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
 import be.technifutur.devmob.sudoku.utils.AutoCompletor;
 import org.junit.jupiter.api.Test;
@@ -112,5 +113,18 @@ class Sudoku4x4Test {
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
         s.delete(p);
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
+    }
+
+    /*
+        Test N°10 : Testing if update() updates the value at of the cell at a given Position
+     */
+    @Test
+    void testUpdateUpdatesTheValueOfCellAtGivenPosition() throws SudokuException {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        Position4x4 p = new Position4x4(2);
+        s.add(p, '2');
+        assertEquals('2', s.get(p));
+        s.update(p, '3');
+        assertEquals('3', s.get(p));
     }
 }
