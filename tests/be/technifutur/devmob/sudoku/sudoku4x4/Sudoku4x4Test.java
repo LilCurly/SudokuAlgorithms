@@ -1,9 +1,6 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
-import be.technifutur.devmob.sudoku.CellLockedException;
-import be.technifutur.devmob.sudoku.Cellule;
-import be.technifutur.devmob.sudoku.SudokuException;
-import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
+import be.technifutur.devmob.sudoku.*;
 import be.technifutur.devmob.sudoku.utils.AutoCompletor;
 import org.junit.jupiter.api.Test;
 
@@ -39,7 +36,7 @@ class Sudoku4x4Test {
         Test N°3 : Testing if adding a new value that is correct at a given Position4x4 correctly adds it to the values array
      */
     @Test
-    void testAddingCorrectValueAtPositionAddsValueToArray() throws CellLockedException, ValueAlreadyDefinedException {
+    void testAddingCorrectValueAtPositionAddsValueToArray() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(5);
         assertTrue(s.add(p, '1'));
@@ -50,7 +47,7 @@ class Sudoku4x4Test {
         Test N°4 : Testing if adding a new value that is not correct at a given Position4x4 doesn't add it to the values array
      */
     @Test
-    void testAddingNotCorrectValueAtPositionDoesNotAddValueToArray() throws CellLockedException, ValueAlreadyDefinedException {
+    void testAddingNotCorrectValueAtPositionDoesNotAddValueToArray() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(5);
         boolean isAdded = false;
@@ -63,7 +60,7 @@ class Sudoku4x4Test {
         Test N°5 : Testing if getting the value at a given Position returns the correct value
      */
     @Test
-    void testGetValueReturnsTheCorrectValue() throws CellLockedException, ValueAlreadyDefinedException {
+    void testGetValueReturnsTheCorrectValue() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 pos = new Position4x4(10);
         s.add(pos, '3');
@@ -74,7 +71,7 @@ class Sudoku4x4Test {
         Test N°6 : Testing if isComplete() returns false when the sudoku is not full yet
      */
     @Test
-    void testIsCompleteReturnsFalseWhenTheSudokuIsNotFull() throws CellLockedException, ValueAlreadyDefinedException {
+    void testIsCompleteReturnsFalseWhenTheSudokuIsNotFull() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         s.add(new Position4x4(10), '2');
         assertFalse(s.isComplete());
@@ -84,7 +81,7 @@ class Sudoku4x4Test {
         Test N°7 : Testing if isComplete() returns true when the sudoky is full
      */
     @Test
-    void testIsCompleteReturnsTrueWhenTheSudokuIsFull() throws CellLockedException, ValueAlreadyDefinedException {
+    void testIsCompleteReturnsTrueWhenTheSudokuIsFull() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         AutoCompletor.complete(s);
         assertTrue(s.isComplete());
@@ -94,7 +91,7 @@ class Sudoku4x4Test {
         Test N°8 : Testing if delete() deletes the value at the given position and sets it back to an empty value
      */
     @Test
-    void testDeleteSetsBackValueToEmpty() throws CellLockedException, ValueAlreadyDefinedException {
+    void testDeleteSetsBackValueToEmpty() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(9);
         s.add(p, '2');
@@ -158,5 +155,16 @@ class Sudoku4x4Test {
         s.lock();
         assertFalse(s.getCellule(new Position4x4(1)).isLocked());
         assertTrue(s.getCellule(p).isLocked());
+    }
+
+    /*
+        Test N°14 : Testing if setting two times a value to a specific cell is not possible
+     */
+    @Test
+    void testSettingTwoTimesValueToCellNotPossible() throws SudokuException {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        Position4x4 p = new Position4x4(2);
+        assertTrue(s.add(p, '1'));
+        assertThrows(CellAlreadySetException.class, () -> s.add(p, '2'));
     }
 }
