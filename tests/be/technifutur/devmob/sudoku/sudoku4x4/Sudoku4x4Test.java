@@ -106,7 +106,7 @@ class Sudoku4x4Test {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(2);
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
-        s.delete(p);
+        assertThrows(CellNotSetException.class, () -> s.delete(p));
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
     }
 
