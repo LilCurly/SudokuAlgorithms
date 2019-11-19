@@ -1,6 +1,7 @@
 package be.technifutur.devmob.sudoku;
 
 import be.technifutur.devmob.sudoku.utils.ValueSet;
+import com.sun.jdi.Value;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -72,7 +73,7 @@ class CelluleTest {
         cell.addValueSet(new ValueSet(4));
         cell.addValueSet(new ValueSet(4));
         cell.setValue('3');
-        assertFalse(cell.setValue('3'));
+        assertThrows(ValueAlreadyDefinedException.class, () -> cell.setValue('3'));
     }
 
     /*
