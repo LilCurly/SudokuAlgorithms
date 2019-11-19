@@ -62,7 +62,7 @@ public class Sudoku4x4 {
             result = values[p.getPos()].updateValue(val);
         }
         else {
-            throw new ValueOutOfBoundException(4, val);
+            throw new ValueOutOfBoundException(val, 4);
         }
         return result;
     }
