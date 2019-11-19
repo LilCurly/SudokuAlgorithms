@@ -20,17 +20,17 @@ public class Sudoku9x9Vue {
         Cellule[] vals = model.getValues();
         sb = new StringBuilder();
         sb.append(              "+---------+---------+---------+\n");
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[0], vals[1], vals[2], vals[3], vals[4], vals[5], vals[6], vals[7], vals[8]));
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[9], vals[10], vals[11], vals[12], vals[13], vals[14], vals[15], vals[16], vals[17]));
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[18], vals[19], vals[20], vals[21], vals[22], vals[23], vals[24], vals[25], vals[26]));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[0].getValue(), vals[1].getValue(), vals[2].getValue(), vals[3].getValue(), vals[4].getValue(), vals[5].getValue(), vals[6].getValue(), vals[7].getValue(), vals[8].getValue()));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[9].getValue(), vals[10].getValue(), vals[11].getValue(), vals[12].getValue(), vals[13].getValue(), vals[14].getValue(), vals[15].getValue(), vals[16].getValue(), vals[17].getValue()));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[18].getValue(), vals[19].getValue(), vals[20].getValue(), vals[21].getValue(), vals[22].getValue(), vals[23].getValue(), vals[24].getValue(), vals[25].getValue(), vals[26].getValue()));
         sb.append(              "+---------+---------+---------+\n");
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[27], vals[28], vals[29], vals[30], vals[31], vals[32], vals[33], vals[34], vals[35]));
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[36], vals[37], vals[38], vals[39], vals[40], vals[41], vals[42], vals[43], vals[44]));
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[45], vals[46], vals[47], vals[48], vals[49], vals[50], vals[51], vals[52], vals[53]));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[27].getValue(), vals[28].getValue(), vals[29].getValue(), vals[30].getValue(), vals[31].getValue(), vals[32].getValue(), vals[33].getValue(), vals[34].getValue(), vals[35].getValue()));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[36].getValue(), vals[37].getValue(), vals[38].getValue(), vals[39].getValue(), vals[40].getValue(), vals[41].getValue(), vals[42].getValue(), vals[43].getValue(), vals[44].getValue()));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[45].getValue(), vals[46].getValue(), vals[47].getValue(), vals[48].getValue(), vals[49].getValue(), vals[50].getValue(), vals[51].getValue(), vals[52].getValue(), vals[53].getValue()));
         sb.append(              "+---------+---------+---------+\n");
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[54], vals[55], vals[56], vals[57], vals[58], vals[59], vals[60], vals[61], vals[62]));
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[63], vals[64], vals[65], vals[66], vals[67], vals[68], vals[69], vals[70], vals[71]));
-        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[72], vals[73], vals[74], vals[75], vals[76], vals[77], vals[78], vals[79], vals[80]));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[54].getValue(), vals[55].getValue(), vals[56].getValue(), vals[57].getValue(), vals[58].getValue(), vals[59].getValue(), vals[60].getValue(), vals[61].getValue(), vals[62].getValue()));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[63].getValue(), vals[64].getValue(), vals[65].getValue(), vals[66].getValue(), vals[67].getValue(), vals[68].getValue(), vals[69].getValue(), vals[70].getValue(), vals[71].getValue()));
+        sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[72].getValue(), vals[73].getValue(), vals[74].getValue(), vals[75].getValue(), vals[76].getValue(), vals[77].getValue(), vals[78].getValue(), vals[79].getValue(), vals[80].getValue()));
         sb.append(              "+---------+---------+---------+\n");
     }
 
