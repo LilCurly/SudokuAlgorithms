@@ -1,5 +1,8 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.CellLockedException;
+import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,10 +48,18 @@ public class Sudoku4x4Controller {
                 char value = regexValues[2].charAt(0);
                 boolean result = false;
                 if(Position4x4.isValid(col - 1, row - 1) && addMatcher.matches()) {
-                    result = model.add(new Position4x4(col - 1, row - 1), value);
+                    try {
+                        result = model.add(new Position4x4(col - 1, row - 1), value);
+                    } catch (ValueAlreadyDefinedException | CellLockedException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 else if(Position4x4.isValid(col - 1, row - 1) && updateMatcher.matches()) {
-                    result = model.update(new Position4x4(col - 1, row - 1), value);
+                    try {
+                        result = model.update(new Position4x4(col - 1, row - 1), value);
+                    } catch (ValueAlreadyDefinedException | CellLockedException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
                 if(result) {
                     view.update();
