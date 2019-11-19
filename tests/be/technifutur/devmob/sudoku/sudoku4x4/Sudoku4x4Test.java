@@ -136,4 +136,14 @@ class Sudoku4x4Test {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         assertFalse(s.isLocked());
     }
+
+    /*
+        Test N°12 : Testing if calling lock() sets locked to false
+     */
+    @Test
+    void testCallingLockSetsLockToFalse() {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        s.lock();
+        assertTrue(s.isLocked());
+    }
 }
