@@ -174,6 +174,6 @@ class Sudoku4x4Test {
     @Test
     void testUpdatingCellValueThatWasNotSetIsNotPossible() throws SudokuException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
-        assertFalse(s.update(new Position4x4(1), '1'));
+        assertThrows(CellNotSetException.class, () -> s.update(new Position4x4(1), '1'));
     }
 }
