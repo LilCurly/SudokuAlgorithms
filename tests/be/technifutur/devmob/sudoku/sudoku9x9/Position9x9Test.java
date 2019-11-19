@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.sudoku9x9;
 
+import be.technifutur.devmob.sudoku.PositionInvalidException;
+import be.technifutur.devmob.sudoku.SudokuException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -111,20 +113,20 @@ class Position9x9Test {
         Testing if isValid() returns false when the values are out of limits
      */
     @Test
-    void testIsValidReturnsFalseWhenOutOfLimits() {
-        assertFalse(Position9x9.isValid(-1));
-        assertFalse(Position9x9.isValid(81));
-        assertFalse(Position9x9.isValid(100));
-        assertFalse(Position9x9.isValid(-1, 5));
-        assertFalse(Position9x9.isValid(5, 9));
-        assertFalse(Position9x9.isValid(-1, 9));
+    void testIsValidReturnsFalseWhenOutOfLimits() throws SudokuException {
+        assertThrows(PositionInvalidException.class, () -> Position9x9.isValid(-1));
+        assertThrows(PositionInvalidException.class, () -> Position9x9.isValid(81));
+        assertThrows(PositionInvalidException.class, () -> Position9x9.isValid(100));
+        assertThrows(PositionInvalidException.class, () -> Position9x9.isValid(-1, 5));
+        assertThrows(PositionInvalidException.class, () -> Position9x9.isValid(5, 9));
+        assertThrows(PositionInvalidException.class, () -> Position9x9.isValid(-1, 9));
     }
 
     /*
         Testing if isValid() returns true when the values are valid
      */
     @Test
-    void testIsValidReturnsTrueWhenValuesAreValid() {
+    void testIsValidReturnsTrueWhenValuesAreValid() throws SudokuException {
         assertTrue(Position9x9.isValid(0));
         assertTrue(Position9x9.isValid(80));
         assertTrue(Position9x9.isValid(30));
