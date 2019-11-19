@@ -64,21 +64,34 @@ public class Sudoku4x4Controller {
                 if(result) {
                     view.update();
                     if(model.isComplete()) {
-                        view.show(String.format("%s ajouté à la ligne %d et la colonne %d\nSudoku terminé!", value, row, col));
-                        view.showSudoku();
-                        view.prompt("Entrez n'importe quelle valeur pour quitter le Sudoku: ");
+                        handleComplete(value, row, col);
                         isOver = true;
                     }
                     else {
-                        view.show(String.format("%s ajouté à la ligne %d et la colonne %d", value, row, col));
+                        handleAdded(value, row, col);
                         view.showSudoku();
                     }
                 }
                 else {
-                    view.show(String.format("%s ne peut pas être ajouté à la ligne %d et la colonne %d", value, row, col));
-                    view.showSudoku();
+                    handleNotAdded(value, row, col);
                 }
             }
         }
+    }
+
+    private void handleComplete(char value, int row, int col) {
+        handleAdded(value, row, col);
+        view.show("Sudoku terminé!");
+        view.showSudoku();
+        view.prompt("Entrez n'importe quelle valeur pour quitter le Sudoku: ");
+    }
+
+    private void handleAdded(char value, int row, int col) {
+        view.show(String.format("%s ajouté à la ligne %d et la colonne %d", value, row, col));
+    }
+
+    private void handleNotAdded(char value, int row, int col) {
+        view.show(String.format("%s ne peut pas être ajouté à la ligne %d et la colonne %d", value, row, col));
+        view.showSudoku();
     }
 }
