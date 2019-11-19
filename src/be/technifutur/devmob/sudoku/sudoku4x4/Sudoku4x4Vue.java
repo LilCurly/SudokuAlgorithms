@@ -35,6 +35,10 @@ public class Sudoku4x4Vue {
         user.show(message);
     }
 
+    public void separator() {
+        System.out.println("---------------------");
+    }
+
     public String prompt(String message) {
         return user.prompt(message);
     }
