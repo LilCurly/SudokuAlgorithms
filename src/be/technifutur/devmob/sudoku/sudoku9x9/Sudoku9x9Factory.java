@@ -20,7 +20,7 @@ public class Sudoku9x9Factory {
             // COLUMN
             cell.addValueSet(sets[(i % 9) + 9]);
             // SECTOR
-            cell.addValueSet(sets[(((int) Math.floor((double) i / 18) * 2) + (int) Math.floor((double) (i % 9) / 2)) + 18]);
+            cell.addValueSet(sets[(((int) Math.floor((double) i / 27) * 3) + (int) Math.floor((double) (i % 9) / 3)) + 18]);
             model.setCellule(new Position9x9(i), cell);
         }
         return model;
