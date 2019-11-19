@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.PositionInvalidException;
+
 public class Position4x4 {
     private int pos;
 
@@ -39,18 +41,18 @@ public class Position4x4 {
         return pos;
     }
 
-    public static boolean isValid(int pos) {
+    public static boolean isValid(int pos) throws PositionInvalidException {
         boolean result = true;
         if(pos < 0 || pos >= 16) {
-            result = false;
+            throw new PositionInvalidException(pos);
         }
         return result;
     }
 
-    public static boolean isValid(int col, int row) {
+    public static boolean isValid(int col, int row) throws PositionInvalidException {
         boolean result = true;
         if((col < 0 || col >= 4) || (row < 0 || row >= 4)) {
-            result = false;
+            throw new PositionInvalidException(col, row);
         }
         return result;
     }
