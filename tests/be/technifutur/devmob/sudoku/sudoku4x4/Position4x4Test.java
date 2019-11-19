@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Position4x4Test {
 
     /*
-        Testing if getPos() returns the position given to the constructor
+        Test N°1 : Testing if getPos() returns the position given to the constructor
      */
     @Test
     void testGetPosFromOneVariableConstructor() {
@@ -19,7 +19,7 @@ class Position4x4Test {
 
 
     /*
-        Testing if row and col given to constructor are correctly translated to one only value
+        Test N°2 : Testing if row and col given to constructor are correctly translated to one only value
      */
     @Test
     void testGetPosFromTwoVariablesConstructor() {
@@ -32,7 +32,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if getCol() returns the correct column from the row/col given to the constructor
+        Test N°3 : Testing if getCol() returns the correct column from the row/col given to the constructor
      */
     @Test
     void testGetColFromTwoVariableConstructor() {
@@ -41,7 +41,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if getRow() returns the correct row from the row/col given to the constructor
+        Test N°4 : Testing if getRow() returns the correct row from the row/col given to the constructor
      */
     @Test
     void testGetRowFromTwoVariableConstructor() {
@@ -50,7 +50,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if getRow() returns the correct column from the pos given to the constructor
+        Test N°5 : Testing if getRow() returns the correct column from the pos given to the constructor
      */
     @Test
     void testGetColFromOneVariableConstructor() {
@@ -59,7 +59,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if getCol() returns the correct column from the pos given to the constructor
+        Test N°6 : Testing if getCol() returns the correct column from the pos given to the constructor
      */
     @Test
     void testGetRowFromOneVariableConstructor() {
@@ -68,7 +68,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if getSector() returns the correct sector
+        Test N°7 : Testing if getSector() returns the correct sector
      */
     @Test
     void testGetSector() {
@@ -83,7 +83,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if getRowSector() returns the correct row in the form of a sector
+        Test N°8 : Testing if getRowSector() returns the correct row in the form of a sector
      */
     @Test
     void testGetSectorRow() {
@@ -96,7 +96,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if getColSector() returns the correct col in the form of a sector
+        Test N°9 : Testing if getColSector() returns the correct col in the form of a sector
      */
     @Test
     void testGetSectorCol() {
@@ -109,7 +109,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if isValid() returns false when giving a position out of the limits
+        Test N°10 : Testing if isValid() returns false when giving a position out of the limits
      */
     @Test
     void testIsValidReturnsFalseWhenOutOfLimits() throws SudokuException {
@@ -121,7 +121,7 @@ class Position4x4Test {
     }
 
     /*
-        Testing if isValid() returns true when giving a valid position
+        Test N°11 : Testing if isValid() returns true when giving a valid position
      */
     @Test
     void testIsValidReturnsTrueWithValidPosition() throws SudokuException {
