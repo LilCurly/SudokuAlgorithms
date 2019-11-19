@@ -2,6 +2,7 @@ package be.technifutur.devmob.sudoku.utils;
 
 import be.technifutur.devmob.sudoku.CellLockedException;
 import be.technifutur.devmob.sudoku.Cellule;
+import be.technifutur.devmob.sudoku.SudokuException;
 import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
 
@@ -15,7 +16,7 @@ public class AutoCompletor {
             while(repeat) {
                 try {
                     repeat = !cells[i].setValue(vals[index]);
-                } catch (ValueAlreadyDefinedException | CellLockedException e) {
+                } catch (SudokuException e) {
                     System.out.println(e.getMessage());
                     repeat = true;
                 }
