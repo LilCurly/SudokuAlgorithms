@@ -96,6 +96,9 @@ public class Sudoku4x4Controller {
                     handleDelete(row, col);
                     view.showSudoku();
                 }
+                else {
+                    view.showSudoku();
+                }
             }
         }
     }
