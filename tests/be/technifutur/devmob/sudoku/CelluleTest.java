@@ -49,7 +49,7 @@ class CelluleTest {
         Cellule cell = new Cellule();
         cell.addValueSet(new ValueSet(4));
         cell.setValue('2');
-        assertFalse(cell.setValue('2'));
+        assertThrows(ValueAlreadyDefinedException.class, () -> cell.setValue('2'));
     }
 
     /*
