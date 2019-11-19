@@ -45,7 +45,10 @@ public class Cellule {
         return result;
     }
 
-    public boolean deleteValue() {
+    public boolean deleteValue() throws SudokuException {
+        if(!isModifiable) {
+            throw new CellLockedException();
+        }
         boolean result = true;
         int index = 0;
         while(result && index < vs.size()) {
