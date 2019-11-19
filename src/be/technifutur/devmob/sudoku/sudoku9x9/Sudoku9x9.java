@@ -46,7 +46,11 @@ public class Sudoku9x9 {
     }
 
     public boolean delete(Position9x9 p) throws SudokuException {
-        return values[p.getPos()].deleteValue();
+        boolean result = values[p.getPos()].deleteValue();
+        if(!result) {
+            throw new CellNotSetException(p.getRow(), p.getCol());
+        }
+        return result;
     }
 
     public void setCellule(Position9x9 p, Cellule cell) {
