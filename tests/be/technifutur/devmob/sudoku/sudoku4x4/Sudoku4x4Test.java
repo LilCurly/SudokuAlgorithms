@@ -167,4 +167,13 @@ class Sudoku4x4Test {
         assertTrue(s.add(p, '1'));
         assertThrows(CellAlreadySetException.class, () -> s.add(p, '2'));
     }
+
+    /*
+        Test N°15 : Testing if updating a cell that was never set is not possible
+     */
+    @Test
+    void testUpdatingCellValueThatWasNotSetIsNotPossible() throws SudokuException {
+        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
+        assertFalse(s.update(new Position4x4(1), '1'));
+    }
 }
