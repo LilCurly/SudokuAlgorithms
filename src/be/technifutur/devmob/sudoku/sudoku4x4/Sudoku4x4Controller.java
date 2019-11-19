@@ -19,6 +19,7 @@ public class Sudoku4x4Controller {
 
     public void start() {
         boolean isOver = false;
+        view.separator();
         view.show("Sudoku 4x4");
         view.showSudoku();
         while(!isOver) {
@@ -31,6 +32,7 @@ public class Sudoku4x4Controller {
             Matcher updateMatcher;
             do {
                 entry = view.prompt("Entrez une valeur dans le format : {ligne}.{colonne}.{valeur} pour entrer une nouvelle valeur ou 0 pour quitter : ");
+                view.separator();
                 addMatcher = add.matcher(entry);
                 deleteMatcher = delete.matcher(entry);
                 updateMatcher = update.matcher(entry);
@@ -75,7 +77,7 @@ public class Sudoku4x4Controller {
                     }
                 }
                 else {
-                    handleNotAdded(value, row, col);
+                    view.showSudoku();
                 }
             }
             else {
@@ -135,10 +137,5 @@ public class Sudoku4x4Controller {
 
     private void handleAdded(char value, int row, int col) {
         view.show(String.format("%s ajouté à la ligne %d et la colonne %d", value, row, col));
-    }
-
-    private void handleNotAdded(char value, int row, int col) {
-        view.show(String.format("%s ne peut pas être ajouté à la ligne %d et la colonne %d", value, row, col));
-        view.showSudoku();
     }
 }
