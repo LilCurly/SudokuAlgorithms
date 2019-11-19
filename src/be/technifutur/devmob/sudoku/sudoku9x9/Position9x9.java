@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.sudoku9x9;
 
+import be.technifutur.devmob.sudoku.PositionInvalidException;
+
 public class Position9x9 {
     private int pos;
 
@@ -39,18 +41,18 @@ public class Position9x9 {
         return getColSector() + (getRowSector() * 3);
     }
 
-    public static boolean isValid(int pos) {
+    public static boolean isValid(int pos) throws PositionInvalidException {
         boolean result = true;
         if(pos < 0 || pos >= 81) {
-            result = false;
+            throw new PositionInvalidException(pos);
         }
         return result;
     }
 
-    public static boolean isValid(int col, int row) {
+    public static boolean isValid(int col, int row) throws PositionInvalidException {
         boolean result = true;
         if((col < 0 || col >= 9) || (row < 0 || row >= 9)) {
-            result = false;
+            throw new PositionInvalidException(col, row);
         }
         return result;
     }
