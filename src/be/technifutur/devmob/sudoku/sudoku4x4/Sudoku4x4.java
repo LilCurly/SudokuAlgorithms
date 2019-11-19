@@ -1,6 +1,8 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.CellLockedException;
 import be.technifutur.devmob.sudoku.Cellule;
+import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
 
 public class Sudoku4x4 {
     public static final char EMPTY = '.';
@@ -19,7 +21,7 @@ public class Sudoku4x4 {
         return values[p.getPos()];
     }
 
-    public boolean add(Position4x4 p, char val) {
+    public boolean add(Position4x4 p, char val) throws ValueAlreadyDefinedException, CellLockedException {
         boolean result = false;
         if(val >= '1' && val <= '4') {
             result = values[p.getPos()].setValue(val);
@@ -47,7 +49,7 @@ public class Sudoku4x4 {
         return values[p.getPos()].deleteValue();
     }
 
-    public boolean update(Position4x4 p, char val) {
+    public boolean update(Position4x4 p, char val) throws ValueAlreadyDefinedException, CellLockedException {
         boolean result = false;
         if(val >= '1' && val <= '4') {
             result = values[p.getPos()].updateValue(val);
