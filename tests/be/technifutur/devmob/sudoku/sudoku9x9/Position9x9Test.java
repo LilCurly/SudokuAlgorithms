@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class Position9x9Test {
 
     /*
-        Testing if getPos() returns the correct position that was given to the constructor
+        Test N°1 : Testing if getPos() returns the correct position that was given to the constructor
      */
     @Test
     void testGetPosReturnsCorrectValueFromPosGivenToConstructor() {
@@ -18,7 +18,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getPos() returns the correct position when Position9x9 is instantiated with a row and a column
+        Test N°2 : Testing if getPos() returns the correct position when Position9x9 is instantiated with a row and a column
      */
     @Test
     void testGetPosReturnsCorrectValueFromRowColGivenToConstructor() {
@@ -27,7 +27,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getRow() returns the correct row when Position9x9 is instantiated with a position
+        Test N°3 : Testing if getRow() returns the correct row when Position9x9 is instantiated with a position
      */
     @Test
     void testGetRowReturnsCorrectRowFromPosGivenToConstructor() {
@@ -40,7 +40,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getCol() returns the correct col when Position9x9 is instantiated with a position
+        Test N°4 : Testing if getCol() returns the correct col when Position9x9 is instantiated with a position
      */
     @Test
     void testGetColReturnsCorrectColFromPosGivenToConstructor() {
@@ -53,7 +53,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getRow() returns the correct row when Position9x9 is instantiated with a row and a column
+        Test N°5 : Testing if getRow() returns the correct row when Position9x9 is instantiated with a row and a column
      */
     @Test
     void testGetRowReturnsCorrectRowFromRowColGivenToConstructor() {
@@ -62,7 +62,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getCol() returns the correct col when Position9x9 is instantiated with a row and a column
+        Test N°6 : Testing if getCol() returns the correct col when Position9x9 is instantiated with a row and a column
      */
     @Test
     void testGetColReturnsCorrectColFromRowColGivenToConstructor() {
@@ -71,7 +71,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getRowSector() returns the correct Row in the form of 3x3 sectors
+        Test N°7 : Testing if getRowSector() returns the correct Row in the form of 3x3 sectors
      */
     @Test
     void testGetRowSectorReturnsCorrectRowSector() {
@@ -84,7 +84,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getColSector() returns the correct Col in the form of 3x3 sectors
+        Test N°8 : Testing if getColSector() returns the correct Col in the form of 3x3 sectors
      */
     @Test
     void testGetColSectorReturnsCorrectColSector() {
@@ -97,7 +97,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if getSector() returns the correct Sector in the form of 3x3 sectors
+        Test N°9 : Testing if getSector() returns the correct Sector in the form of 3x3 sectors
      */
     @Test
     void testGetSectorReturnsCorrectSector() {
@@ -110,7 +110,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if isValid() returns false when the values are out of limits
+        Test N°10 : Testing if isValid() returns false when the values are out of limits
      */
     @Test
     void testIsValidReturnsFalseWhenOutOfLimits() throws SudokuException {
@@ -123,7 +123,7 @@ class Position9x9Test {
     }
 
     /*
-        Testing if isValid() returns true when the values are valid
+        Test N°11 : Testing if isValid() returns true when the values are valid
      */
     @Test
     void testIsValidReturnsTrueWhenValuesAreValid() throws SudokuException {
