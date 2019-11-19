@@ -123,14 +123,26 @@ class CelluleTest {
     }
 
     /*
-        Test N°11 : Testing if a Cell cannot be modified after being locked
+        Test N°11 : Testing if a Cell value cannot be set after being locked
      */
     @Test
-    void testCellCannotBeModifiedAfterBeingLocked() throws ValueAlreadyDefinedException, CellLockedException {
+    void testCellValueCannotBeSetAfterBeingLocked() throws ValueAlreadyDefinedException, CellLockedException {
         Cellule cell = new Cellule();
         cell.addValueSet(new ValueSet(4));
         cell.lock();
         assertTrue(cell.isLocked());
         assertThrows(CellLockedException.class, () -> cell.setValue('1'));
+    }
+
+    /*
+        Test N°12 : Testing if a Cell value cannot be update after being locked
+     */
+    @Test
+    void testCellValueCannotBeUpdatedAfterBeingLocked() throws ValueAlreadyDefinedException, CellLockedException {
+        Cellule cell = new Cellule();
+        cell.addValueSet(new ValueSet(4));
+        cell.lock();
+        assertTrue(cell.isLocked());
+        assertThrows(CellLockedException.class, () -> cell.updateValue('1'));
     }
 }
