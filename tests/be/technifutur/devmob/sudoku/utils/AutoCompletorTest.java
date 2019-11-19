@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.utils;
 
+import be.technifutur.devmob.sudoku.CellLockedException;
+import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Factory;
 import org.junit.jupiter.api.Test;
@@ -35,7 +37,7 @@ class AutoCompletorTest {
         Test N°3 : Testing if complete() is able to complete a 4x4 Sudoku
      */
     @Test
-    void testCompleteIsAbleToComplete4x4Sudoku() {
+    void testCompleteIsAbleToComplete4x4Sudoku() throws ValueAlreadyDefinedException, CellLockedException {
         Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         AutoCompletor.complete(s);
         assertTrue(s.isComplete());
