@@ -1,5 +1,6 @@
 package be.technifutur.devmob.sudoku.sudoku9x9;
 
+import be.technifutur.devmob.sudoku.Cellule;
 import be.technifutur.devmob.sudoku.utils.User;
 import be.technifutur.devmob.sudoku.utils.UserConsole;
 
@@ -16,7 +17,7 @@ public class Sudoku9x9Vue {
     }
 
     public void update() {
-        char[] vals = model.getValues();
+        Cellule[] vals = model.getValues();
         sb = new StringBuilder();
         sb.append(              "+---------+---------+---------+\n");
         sb.append(String.format("| %s  %s  %s | %s  %s  %s | %s  %s  %s |\n", vals[0], vals[1], vals[2], vals[3], vals[4], vals[5], vals[6], vals[7], vals[8]));
