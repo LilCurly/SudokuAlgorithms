@@ -37,7 +37,7 @@ public class PositionEtoile {
         else if(result && row >= 15 && row <= 20) {
             result = col < 9 || col > 11;
         }
-        else {
+        if(!result) {
             throw new PositionInvalidException(row+1, col+1);
         }
         return result;
