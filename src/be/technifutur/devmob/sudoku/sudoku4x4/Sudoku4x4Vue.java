@@ -1,16 +1,15 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.sudoku_interfaces.VisualSudoku;
 import be.technifutur.devmob.sudoku.utils.User;
 import be.technifutur.devmob.sudoku.utils.UserConsole;
 
-import java.util.Scanner;
-
 public class Sudoku4x4Vue {
     private StringBuilder sb;
-    private Sudoku4x4 model;
+    private VisualSudoku model;
     private User user;
 
-    public Sudoku4x4Vue(Sudoku4x4 model) {
+    public Sudoku4x4Vue(VisualSudoku model) {
         this.model = model;
         this.user = new UserConsole();
         update();
