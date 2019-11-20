@@ -20,7 +20,7 @@ public class PositionEtoile {
         }
         // CASE 2
         else if(row >= 6 && row <= 8) {
-            this.pos = ((row * 18) + (2 * (int) Math.ceil(row / 7))) + col;
+            this.pos = (((row * 20) - 12) + (row % 6)) + col;
         }
         // CASE 3
         else if(row >= 9 && row <= 11) {
