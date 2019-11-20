@@ -44,5 +44,10 @@ class PositionEtoileTest {
         assertEquals(171, p5.getPos());
         PositionEtoile p6 = new PositionEtoile(11, 10);
         assertEquals(193, p6.getPos());
+        // Testing case 4
+        PositionEtoile p7 = new PositionEtoile(12, 0);
+        assertEquals(198, p7.getPos());
+        PositionEtoile p8 = new PositionEtoile(14, 10);
+        assertEquals(250, p8.getPos());
     }
 }
