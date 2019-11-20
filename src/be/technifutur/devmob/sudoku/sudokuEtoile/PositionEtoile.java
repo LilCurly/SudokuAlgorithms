@@ -1,5 +1,7 @@
 package be.technifutur.devmob.sudoku.sudokuEtoile;
 
+import be.technifutur.devmob.sudoku.PositionInvalidException;
+
 public class PositionEtoile {
     private int pos;
     private int row;
@@ -13,7 +15,7 @@ public class PositionEtoile {
         setPos(row, col);
     }
 
-    public static boolean isValid(int row, int col) {
+    public static boolean isValid(int row, int col) throws PositionInvalidException {
         boolean result = col >= 0 && col <= 20;
         // CASE 1
         if(result && row >= 0 && row <= 5) {
@@ -34,6 +36,9 @@ public class PositionEtoile {
         // CASE 5
         else if(result && row >= 15 && row <= 20) {
             result = col < 9 || col > 11;
+        }
+        else {
+            throw new PositionInvalidException(row+1, col+1);
         }
         return result;
     }
