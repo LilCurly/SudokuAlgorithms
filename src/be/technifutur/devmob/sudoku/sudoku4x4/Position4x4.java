@@ -1,8 +1,9 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
+import be.technifutur.devmob.sudoku.sudoku_interfaces.Position;
 import be.technifutur.devmob.sudoku.PositionInvalidException;
 
-public class Position4x4 {
+public class Position4x4 implements Position {
     private int pos;
 
     public Position4x4(int num) {
@@ -17,26 +18,32 @@ public class Position4x4 {
         this.pos = col + (row * 4);
     }
 
+    @Override
     public int getCol() {
         return pos % 4;
     }
 
+    @Override
     public int getRow() {
         return (int) Math.ceil(pos / 4);
     }
 
+    @Override
     public int getSector() {
         return getColSector() + (getRowSector() * 2);
     }
 
+    @Override
     public int getRowSector() {
         return (int) Math.floor(pos / 8);
     }
 
+    @Override
     public int getColSector() {
         return (int) Math.floor(getCol() / 2);
     }
 
+    @Override
     public int getPos() {
         return pos;
     }
