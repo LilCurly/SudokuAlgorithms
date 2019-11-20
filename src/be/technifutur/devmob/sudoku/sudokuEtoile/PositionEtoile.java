@@ -16,7 +16,7 @@ public class PositionEtoile {
     }
 
     public static boolean isValid(int row, int col) throws PositionInvalidException {
-        boolean result = col >= 0 && col <= 20;
+        boolean result = col >= 0 && col <= 20 && row >= 0 && row <= 20;
         // CASE 1
         if(result && row >= 0 && row <= 5) {
             result = col < 9 || col > 11;
