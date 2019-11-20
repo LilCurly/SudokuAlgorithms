@@ -1,18 +1,16 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
-import be.technifutur.devmob.sudoku.CellLockedException;
-import be.technifutur.devmob.sudoku.PositionInvalidException;
-import be.technifutur.devmob.sudoku.SudokuException;
-import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
+import be.technifutur.devmob.sudoku.*;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.UpdatableSudoku;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Sudoku4x4Controller {
-    private Sudoku4x4 model;
+    private UpdatableSudoku model;
     private Sudoku4x4Vue view;
 
-    public Sudoku4x4Controller(Sudoku4x4 model, Sudoku4x4Vue view) {
+    public Sudoku4x4Controller(UpdatableSudoku model, Sudoku4x4Vue view) {
         this.model = model;
         this.view = view;
     }
