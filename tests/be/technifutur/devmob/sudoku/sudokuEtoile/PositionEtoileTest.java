@@ -87,6 +87,10 @@ class PositionEtoileTest {
      */
     @Test
     void testIsValidThrowsPositionInvalidExceptionWhenPositionForGivenRowAndColumnIsInvalid() {
+        // Out of bound
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(0, 21));
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(21, 21));
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(-1, 9));
         // Testing case 1
         assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(0, 9));
         assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(4, 10));
