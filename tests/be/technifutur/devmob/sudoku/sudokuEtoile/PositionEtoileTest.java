@@ -29,11 +29,15 @@ class PositionEtoileTest {
      */
     @Test
     void testGetPostReturnsExpectedValueForComplexRowCol() {
+        // Testing case 1
         PositionEtoile p = new PositionEtoile(2, 4);
         assertEquals(40, p.getPos());
         PositionEtoile p2 = new PositionEtoile(5, 17);
         assertEquals(104, p2.getPos());
+        // Testing case 2
         PositionEtoile p3 = new PositionEtoile(6, 0);
         assertEquals(108, p3.getPos());
+        PositionEtoile p4 = new PositionEtoile(8, 10);
+        assertEquals(160, p.getPos());
     }
 }
