@@ -2,15 +2,16 @@ package be.technifutur.devmob.sudoku.sudoku9x9;
 
 import be.technifutur.devmob.sudoku.PositionInvalidException;
 import be.technifutur.devmob.sudoku.SudokuException;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.UpdatableSudoku;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Sudoku9x9Controller {
-    private Sudoku9x9 model;
+    private UpdatableSudoku model;
     private Sudoku9x9Vue view;
 
-    public Sudoku9x9Controller(Sudoku9x9 model, Sudoku9x9Vue view) {
+    public Sudoku9x9Controller(UpdatableSudoku model, Sudoku9x9Vue view) {
         this.model = model;
         this.view = view;
     }
