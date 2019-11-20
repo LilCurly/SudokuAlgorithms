@@ -1,6 +1,7 @@
 package be.technifutur.devmob.sudoku.sudokuEtoile;
 
 import be.technifutur.devmob.sudoku.PositionInvalidException;
+import be.technifutur.devmob.sudoku.SudokuException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,7 +64,7 @@ class PositionEtoileTest {
         Test N°4 : Testing if isValid() returns true for valid row and column
      */
     @Test
-    void testIsValidReturnsTrueForValidRowCol() {
+    void testIsValidReturnsTrueForValidRowCol() throws SudokuException {
         // Testing case 1
         assertTrue(PositionEtoile.isValid(0, 0));
         assertTrue(PositionEtoile.isValid(3, 16));
