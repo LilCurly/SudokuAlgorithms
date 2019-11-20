@@ -57,4 +57,27 @@ class PositionEtoileTest {
         PositionEtoile p11 = new PositionEtoile(20, 20);
         assertEquals(368, p11.getPos());
     }
+
+    /*
+        Test N°4 : Testing if isValid() returns true for valid row and column
+     */
+    @Test
+    void testIsValidReturnsTrueForValidRowCol() {
+        // Testing case 1
+        assertTrue(PositionEtoile.isValid(0, 0));
+        assertTrue(PositionEtoile.isValid(3, 16));
+        // Testing case 2
+        assertTrue(PositionEtoile.isValid(6, 10));
+        assertTrue(PositionEtoile.isValid(8, 18));
+        // Testing case 3
+        assertTrue(PositionEtoile.isValid(9, 6));
+        assertTrue(PositionEtoile.isValid(11, 14));
+        // Testing case 4
+        assertTrue(PositionEtoile.isValid(12, 0));
+        assertTrue(PositionEtoile.isValid(14, 10));
+        // Testing case 5
+        assertTrue(PositionEtoile.isValid(15, 0));
+        assertTrue(PositionEtoile.isValid(18, 16));
+        assertTrue(PositionEtoile.isValid(20, 20));
+    }
 }
