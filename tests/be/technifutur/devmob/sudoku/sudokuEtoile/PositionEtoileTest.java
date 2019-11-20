@@ -1,5 +1,6 @@
 package be.technifutur.devmob.sudoku.sudokuEtoile;
 
+import be.technifutur.devmob.sudoku.PositionInvalidException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -79,5 +80,23 @@ class PositionEtoileTest {
         assertTrue(PositionEtoile.isValid(15, 0));
         assertTrue(PositionEtoile.isValid(18, 16));
         assertTrue(PositionEtoile.isValid(20, 20));
+    }
+
+    /*
+        Test N°5 : Testing if isValid() throws a PositionInvalidException when position for given row and column is not valid
+     */
+    @Test
+    void testIsValidThrowsPositionInvalidExceptionWhenPositionForGivenRowAndColumnIsInvalid() {
+        // Testing case 1
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(0, 9));
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(4, 10));
+        // Testing case 3
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(9, 0));
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(11, 4));
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(10, 18));
+        // Testing case 5
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(15, 9));
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(17, 10));
+        assertThrows(PositionInvalidException.class, () -> PositionEtoile.isValid(20, 11));
     }
 }
