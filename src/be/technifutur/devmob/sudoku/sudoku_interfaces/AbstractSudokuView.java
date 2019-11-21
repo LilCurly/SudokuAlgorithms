@@ -1,17 +1,25 @@
 package be.technifutur.devmob.sudoku.sudoku_interfaces;
 
+import be.technifutur.devmob.sudoku.SudokuStructuresConsole;
 import be.technifutur.devmob.sudoku.utils.User;
 import be.technifutur.devmob.sudoku.utils.UserConsole;
 
-public abstract class AbstractSudokuView {
+public class AbstractSudokuView {
     private StringBuilder sb;
     private User user;
+    private SudokuStructures struct;
+    private VisualSudoku model;
 
-    public AbstractSudokuView() {
+    public AbstractSudokuView(VisualSudoku model) {
         this.user = new UserConsole();
+        this.model = model;
+        this.struct = new SudokuStructuresConsole(model);
+        update();
     }
 
-    public abstract void update();
+    public void update() {
+        this.sb = struct.getStructure();
+    }
 
     public void showSudoku() {
         System.out.println(sb.toString());
@@ -31,13 +39,5 @@ public abstract class AbstractSudokuView {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public void setStringBuilder(StringBuilder sb) {
-        this.sb = sb;
-    }
-
-    public StringBuilder getStringBuilder() {
-        return this.sb;
     }
 }
