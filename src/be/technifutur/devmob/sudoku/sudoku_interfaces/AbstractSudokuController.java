@@ -3,16 +3,15 @@ package be.technifutur.devmob.sudoku.sudoku_interfaces;
 import be.technifutur.devmob.sudoku.PositionFactory;
 import be.technifutur.devmob.sudoku.PositionInvalidException;
 import be.technifutur.devmob.sudoku.SudokuException;
-import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Vue;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class AbstractSudokuController {
+public class AbstractSudokuController {
     private UpdatableSudoku model;
-    private Sudoku4x4Vue view;
+    private AbstractSudokuView view;
 
-    public AbstractSudokuController(UpdatableSudoku model, Sudoku4x4Vue view) {
+    public AbstractSudokuController(UpdatableSudoku model, AbstractSudokuView view) {
         this.model = model;
         this.view = view;
     }
