@@ -19,7 +19,7 @@ public class AbstractSudokuController {
     public void start() {
         boolean isOver = false;
         view.separator();
-        view.show("Sudoku 4x4");
+        view.showTitle();
         view.showSudoku();
         while(!isOver) {
             String entry;
