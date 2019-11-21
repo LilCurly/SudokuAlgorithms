@@ -1,14 +1,12 @@
 package be.technifutur.devmob.sudoku.utils;
 
-import be.technifutur.devmob.sudoku.CellLockedException;
 import be.technifutur.devmob.sudoku.Cellule;
 import be.technifutur.devmob.sudoku.SudokuException;
-import be.technifutur.devmob.sudoku.ValueAlreadyDefinedException;
-import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.AbstractSudoku;
 
 public class AutoCompletor {
-    public static void complete(Sudoku4x4 model) {
+    public static void complete(AbstractSudoku model) {
         Cellule[] cells = model.getValues();
         char[] vals = generatePossibleValues((int) Math.sqrt(cells.length));
         for(int i = 0; i < cells.length; i++) {
