@@ -1,17 +1,9 @@
 package be.technifutur.devmob.sudoku;
 
-import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
-import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Controller;
-import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Factory;
-import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Vue;
-import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9;
-import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Controller;
-import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Factory;
-import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Vue;
 import be.technifutur.devmob.sudoku.sudokuEtoile.SudokuEtoileVue;
-import be.technifutur.devmob.sudoku.utils.User;
-import be.technifutur.devmob.sudoku.utils.UserConsole;
-import be.technifutur.devmob.sudoku.utils.UserFake;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.AbstractSudokuController;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.AbstractSudokuFactory;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.SudokuType;
 
 import java.util.Scanner;
 
@@ -38,12 +30,12 @@ public class Main {
             }
             switch (opt) {
                 case "1": {
-                    Sudoku4x4Controller controller = Sudoku4x4Factory.getSudoku4x4();
+                    AbstractSudokuController controller = AbstractSudokuFactory.getSudoku(SudokuType.SUDOKU_4_4);
                     controller.start();
                     break;
                 }
                 case "2": {
-                    Sudoku9x9Controller controller = Sudoku9x9Factory.getSudoku9x9();
+                    AbstractSudokuController controller = AbstractSudokuFactory.getSudoku(SudokuType.SUDOKU_9_9);
                     controller.start();
                     break;
                 }
