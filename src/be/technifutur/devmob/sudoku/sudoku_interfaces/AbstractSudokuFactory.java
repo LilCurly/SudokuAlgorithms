@@ -3,10 +3,8 @@ package be.technifutur.devmob.sudoku.sudoku_interfaces;
 import be.technifutur.devmob.sudoku.Cellule;
 import be.technifutur.devmob.sudoku.sudoku4x4.Position4x4;
 import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
-import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Vue;
 import be.technifutur.devmob.sudoku.sudoku9x9.Position9x9;
 import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9;
-import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9Vue;
 import be.technifutur.devmob.sudoku.utils.User;
 import be.technifutur.devmob.sudoku.utils.UserConsole;
 import be.technifutur.devmob.sudoku.utils.ValueSet;
@@ -56,16 +54,8 @@ public class AbstractSudokuFactory {
     }
 
     public static AbstractSudokuView getSudokuView(AbstractSudoku model, User user) {
-        AbstractSudokuView view = null;
-        if (model instanceof Sudoku4x4) {
-            view = new Sudoku4x4Vue(model);
-        }
-        else if (model instanceof Sudoku9x9) {
-            view = new Sudoku9x9Vue(model);
-        }
-        if (view != null) {
-            view.setUser(user);
-        }
+        AbstractSudokuView view = new AbstractSudokuView(model);
+        view.setUser(user);
         return view;
     }
 
