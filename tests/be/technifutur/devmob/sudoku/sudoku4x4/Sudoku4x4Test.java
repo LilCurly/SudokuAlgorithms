@@ -1,19 +1,28 @@
 package be.technifutur.devmob.sudoku.sudoku4x4;
 
 import be.technifutur.devmob.sudoku.*;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.AbstractSudoku;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.AbstractSudokuFactory;
+import be.technifutur.devmob.sudoku.sudoku_interfaces.SudokuType;
 import be.technifutur.devmob.sudoku.utils.AutoCompletor;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class Sudoku4x4Test {
+    AbstractSudoku s;
+
+    @BeforeEach
+    void initiateMode() {
+        this.s = AbstractSudokuFactory.getSudokuModel(SudokuType.SUDOKU_4_4);
+    }
 
     /*
         Test N°1 : Testing if creating a new instance of Sudoku4x4 creates an array with empty cells
      */
     @Test
     void testCellsEmptyAfterCreatingNewSudoku4x4Instance() {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Cellule[] values = s.getValues();
         for(Cellule c : values) {
             assertEquals(Sudoku4x4.EMPTY, c.getValue());
@@ -25,7 +34,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testEveryCellsGot3ValueSet() {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Cellule[] values = s.getValues();
         for(Cellule c : values) {
             assertEquals(3, c.getValueSet().size());
@@ -37,7 +45,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testAddingCorrectValueAtPositionAddsValueToArray() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(5);
         assertTrue(s.add(p, '1'));
         assertEquals('1', s.get(p));
@@ -48,7 +55,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testAddingNotCorrectValueAtPositionDoesNotAddValueToArray() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(5);
         assertThrows(ValueOutOfBoundException.class, () -> s.add(p, 'z'));
         assertEquals(Sudoku4x4.EMPTY, s.get(p));
@@ -59,7 +65,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testGetValueReturnsTheCorrectValue() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 pos = new Position4x4(10);
         s.add(pos, '3');
         assertEquals('3', s.get(pos));
@@ -70,7 +75,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testIsCompleteReturnsFalseWhenTheSudokuIsNotFull() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         s.add(new Position4x4(10), '2');
         assertFalse(s.isComplete());
     }
@@ -80,7 +84,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testIsCompleteReturnsTrueWhenTheSudokuIsFull() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         AutoCompletor.complete(s);
         assertTrue(s.isComplete());
     }
@@ -90,7 +93,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testDeleteSetsBackValueToEmpty() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(9);
         s.add(p, '2');
         assertEquals('2', s.get(p), String.format("Should get 2 but got %s", s.get(p)));
@@ -103,7 +105,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testDeleteDoesNotChangeEmptyValue() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(2);
         assertEquals(Sudoku4x4.EMPTY, s.get(p), String.format("Should be empty but got %s", s.get(p)));
         assertThrows(CellNotSetException.class, () -> s.delete(p));
@@ -115,7 +116,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testUpdateUpdatesTheValueOfCellAtGivenPosition() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(2);
         s.add(p, '2');
         assertEquals('2', s.get(p));
@@ -128,7 +128,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testIsLockedFalseWhenModelCreated() {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         assertFalse(s.isLocked());
     }
 
@@ -137,7 +136,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testCallingLockSetsLockToFalse() {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         s.lock();
         assertTrue(s.isLocked());
     }
@@ -147,7 +145,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testCallingLockLocksCellsThatAreNotEmpty() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(5);
         s.add(p, '1');
         s.lock();
@@ -160,7 +157,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testSettingTwoTimesValueToCellNotPossible() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         Position4x4 p = new Position4x4(2);
         assertTrue(s.add(p, '1'));
         assertThrows(CellAlreadySetException.class, () -> s.add(p, '2'));
@@ -171,7 +167,6 @@ class Sudoku4x4Test {
      */
     @Test
     void testUpdatingCellValueThatWasNotSetIsNotPossible() throws SudokuException {
-        Sudoku4x4 s = Sudoku4x4Factory.getSudokuModel();
         assertThrows(CellNotSetException.class, () -> s.update(new Position4x4(1), '1'));
     }
 }
