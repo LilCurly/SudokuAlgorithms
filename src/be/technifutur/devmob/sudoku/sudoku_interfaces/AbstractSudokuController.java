@@ -1,17 +1,18 @@
-package be.technifutur.devmob.sudoku.sudoku9x9;
+package be.technifutur.devmob.sudoku.sudoku_interfaces;
 
+import be.technifutur.devmob.sudoku.PositionFactory;
 import be.technifutur.devmob.sudoku.PositionInvalidException;
 import be.technifutur.devmob.sudoku.SudokuException;
-import be.technifutur.devmob.sudoku.sudoku_interfaces.UpdatableSudoku;
+import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4Vue;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Sudoku9x9Controller {
+public abstract class AbstractSudokuController {
     private UpdatableSudoku model;
-    private Sudoku9x9Vue view;
+    private Sudoku4x4Vue view;
 
-    public Sudoku9x9Controller(UpdatableSudoku model, Sudoku9x9Vue view) {
+    public AbstractSudokuController(UpdatableSudoku model, Sudoku4x4Vue view) {
         this.model = model;
         this.view = view;
     }
@@ -19,7 +20,7 @@ public class Sudoku9x9Controller {
     public void start() {
         boolean isOver = false;
         view.separator();
-        view.show("Sudoku 9x9");
+        view.show("Sudoku 4x4");
         view.showSudoku();
         while(!isOver) {
             String entry;
@@ -52,14 +53,14 @@ public class Sudoku9x9Controller {
                 boolean validPosition = handlePositionValidation(col, row);
                 if(validPosition && addMatcher.matches()) {
                     try {
-                        result = model.add(new Position9x9(col - 1, row - 1), value);
+                        result = model.add(PositionFactory.get(model, col-1, row-1), value);
                     } catch (SudokuException e) {
                         System.out.println(e.getMessage());
                     }
                 }
                 else if(validPosition && updateMatcher.matches()) {
                     try {
-                        result = model.update(new Position9x9(col - 1, row - 1), value);
+                        result = model.update(PositionFactory.get(model, col-1, row-1), value);
                     } catch (SudokuException e) {
                         System.out.println(e.getMessage());
                     }
@@ -91,7 +92,7 @@ public class Sudoku9x9Controller {
                 boolean validPosition = handlePositionValidation(col, row);
                 if(validPosition) {
                     try {
-                        result = model.delete(new Position9x9(col - 1, row - 1));
+                        result = model.delete(PositionFactory.get(model, col-1, row-1));
                     } catch (SudokuException e) {
                         System.out.println(e.getMessage());
                     }
@@ -115,7 +116,7 @@ public class Sudoku9x9Controller {
     private boolean handlePositionValidation(int col, int row) {
         boolean result = false;
         try {
-            result = Position9x9.isValid(col - 1, row - 1);
+            result = PositionFactory.isValid(model, col - 1, row - 1);
         } catch (PositionInvalidException e) {
             System.out.println(e.getMessage());
         }
