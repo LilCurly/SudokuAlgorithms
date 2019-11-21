@@ -1,6 +1,9 @@
 package be.technifutur.devmob.sudoku.sudoku_interfaces;
 
 import be.technifutur.devmob.sudoku.SudokuStructuresConsole;
+import be.technifutur.devmob.sudoku.sudoku4x4.Sudoku4x4;
+import be.technifutur.devmob.sudoku.sudoku9x9.Sudoku9x9;
+import be.technifutur.devmob.sudoku.sudokuEtoile.SudokuEtoile;
 import be.technifutur.devmob.sudoku.utils.User;
 import be.technifutur.devmob.sudoku.utils.UserConsole;
 
@@ -19,6 +22,21 @@ public class AbstractSudokuView {
 
     public void update() {
         this.sb = struct.getStructure();
+    }
+
+    public void showTitle() {
+        if(this.model instanceof Sudoku4x4) {
+            System.out.println("Sudoku 4x4");
+        }
+        else if(this.model instanceof Sudoku9x9) {
+            System.out.println("Sudoku 9x9");
+        }
+        else if(this.model instanceof SudokuEtoile) {
+            System.out.println("Sudoku Etoile");
+        }
+        else {
+            System.out.println("Sudoku");
+        }
     }
 
     public void showSudoku() {
