@@ -17,4 +17,21 @@ public class PositionFactory {
         }
         return null;
     }
+
+    public static boolean isValid(UpdatableSudoku model, int col, int row) throws PositionInvalidException {
+        boolean result = false;
+        if (model instanceof Sudoku4x4) {
+            result = true;
+            if ((col < 0 || col >= 4) || (row < 0 || row >= 4)) {
+                throw new PositionInvalidException(row, col, 4);
+            }
+        }
+        else if (model instanceof Sudoku9x9) {
+            result = true;
+            if((col < 0 || col >= 9) || (row < 0 || row >= 9)) {
+                throw new PositionInvalidException(col, row, 9);
+            }
+        }
+        return result;
+    }
 }
