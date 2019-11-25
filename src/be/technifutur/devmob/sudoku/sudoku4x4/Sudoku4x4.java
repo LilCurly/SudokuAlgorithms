@@ -12,4 +12,9 @@ public class Sudoku4x4 extends AbstractSudoku {
     public boolean isValid(char val) {
         return val >= '1' && val <= '4';
     }
+
+    @Override
+    public int size() {
+        return 16;
+    }
 }
