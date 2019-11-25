@@ -2,6 +2,8 @@ package be.technifutur.devmob.sudoku.sudoku_interfaces;
 
 import be.technifutur.devmob.sudoku.*;
 
+import java.util.Set;
+
 public abstract class AbstractSudoku implements UpdatableSudoku, VisualSudoku {
     private Cellule[] values;
     private boolean locked;
@@ -81,6 +83,16 @@ public abstract class AbstractSudoku implements UpdatableSudoku, VisualSudoku {
         for(Cellule c : values) {
             if(c.getValue() != VisualSudoku.EMPTY) c.lock();
         }
+    }
+
+    @Override
+    public boolean isEmpty(Position p) {
+        return get(p) == EMPTY;
+    }
+
+    @Override
+    public Set<Character> remainingValues() {
+        return null;
     }
 
     public boolean isLocked() {
