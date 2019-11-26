@@ -18,6 +18,16 @@ public class PositionFactory {
         return null;
     }
 
+    public static Position get(UpdatableSudoku model, int num) {
+        if (model instanceof Sudoku4x4) {
+            return new Position4x4(num);
+        }
+        else if(model instanceof Sudoku9x9) {
+            return new Position9x9(num);
+        }
+        return null;
+    }
+
     public static boolean isValid(UpdatableSudoku model, int col, int row) throws PositionInvalidException {
         boolean result = false;
         if (model instanceof Sudoku4x4) {
