@@ -12,4 +12,9 @@ public class SudokuEtoile extends AbstractSudoku {
     public boolean isValid(char val) {
         return val >= '1' && val <= '9';
     }
+
+    @Override
+    public int size() {
+        return 369;
+    }
 }
