@@ -4,7 +4,7 @@ import be.technifutur.devmob.sudoku.SudokuException;
 
 import java.util.Set;
 
-public interface UpdatableSudoku {
+public interface UpdatableSudoku extends VisualSudoku {
     boolean isComplete();
     boolean add(Position pos, char c) throws SudokuException;
     boolean update(Position pos, char c) throws SudokuException;
